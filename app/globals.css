@@ -50,3 +50,11 @@
   color: #000 !important;
 }
 
+
+:where(.css-dev-only-do-not-override-19lec04).ant-drawer .ant-drawer-header{
+    @apply !hidden;
+  }
+  :where(.css-dev-only-do-not-override-19lec04).ant-drawer .ant-drawer-body{
+    @apply !p-3;
+  }
+

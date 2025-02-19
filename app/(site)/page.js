@@ -7,9 +7,9 @@ const page = () => {
   return (
     <div className=' font-poppins '>
       <Hero />
-      <Product />
-      <Blogs />
-      <Services />
+      {/* <Product /> */}
+      {/* <Blogs /> */}
+      {/* <Services /> */}
       
     </div>
   )
