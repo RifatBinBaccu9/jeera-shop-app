@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.container{
+  @apply max-w-[1320px] mx-auto px-3 2xl:px-0;
+}
+.Navbar{
+  .swiper-pagination-bullet-active{
+    @apply !bg-[#E67E22] !w-4 !h-4;
+  }
+  .swiper-pagination-bullet{
+    @apply !w-4 !h-4;
+  }
+}
+.loginSignup{
+  .ant-tabs{
+    @apply !w-[400px] sm:!w-[424px] !flex !flex-col !justify-center !items-center !border rounded-sm;
+  }
+  .ant-tabs-tab-btn{
+    @apply text-[#77878F] text-xl font-semibold;
+  } 
+  .ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn{
+    @apply !text-[#000];
+  }
+ .ant-tabs .ant-tabs-content-holder {
+ @apply !w-full;
+  }
+  .ant-tabs-nav {
+    @apply !w-full !text-center;
+  }
+ .ant-tabs-nav-list{
+    @apply !w-full;
+  }
+  .ant-tabs-tab{
+    @apply !w-full flex justify-center;
+  }
+  :hover > .ant-checkbox-inner{
+    @apply !border-[#FA8232];
+  }
+  :where(.css-dev-only-do-not-override-2v094m).ant-checkbox-checked .ant-checkbox-inner{
+  @apply !bg-[#FA8232] !border-[#FA8232];
+  }
+}
+:where(.css-dev-only-do-not-override-972jks).ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn{
+  color: #E67E22 !important;
+  text-shadow: none;
+}
+:where(.css-dev-only-do-not-override-972jks).ant-tabs .ant-tabs-tab:hover {
+  color: #000 !important;
+}
+
