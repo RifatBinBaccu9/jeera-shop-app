@@ -273,35 +273,35 @@ const About = () => {
                           <Image src={"/rifat.jpg"} alt='team' width={150} height={150} className='w-full h-full border rounded-full'/>
                         </div>
                         <div>
-                           <h1 className='text-lg font-semibold font-poppins'>Kevin Gilbert</h1>
+                           <h1 className='text-lg font-semibold font-poppins'>Rifat Mia</h1>
                            <p className='text-sm font-normal'>Chief Executive Officer</p>
                         </div>
                     </div>
                     <div className='flex flex-row items-center border border-[#D35400] rounded-2xl shadow-lg hover:shadow-2xl transition-all bg-[#F5E1C8] p-6 gap-4'>
                         <div className='w-[84px] h-[84px]'>
-                          <Image src={"/rifat.jpg"} alt='team' width={150} height={150} className='w-full h-full border rounded-full'/>
+                          <Image src={"/team1.jfif"} alt='team' width={150} height={150} className='w-full h-full border rounded-full'/>
                         </div>
                         <div>
                            <h1 className='text-lg font-semibold font-poppins'>Kevin Gilbert</h1>
-                           <p className='text-sm font-normal'>Chief Executive Officer</p>
+                           <p className='text-sm font-normal'>Chief Officer</p>
                         </div>
                     </div>
                     <div className='flex flex-row items-center border border-[#D35400] rounded-2xl shadow-lg hover:shadow-2xl transition-all bg-[#F5E1C8] p-6 gap-4'>
                         <div className='w-[84px] h-[84px]'>
-                          <Image src={"/rifat.jpg"} alt='team' width={150} height={150} className='w-full h-full border rounded-full'/>
+                          <Image src={"/team2.jfif"} alt='team' width={150} height={150} className='w-full h-full border rounded-full'/>
                         </div>
                         <div>
-                           <h1 className='text-lg font-semibold font-poppins'>Kevin Gilbert</h1>
-                           <p className='text-sm font-normal'>Chief Executive Officer</p>
+                           <h1 className='text-lg font-semibold font-poppins'>Faron Gilbert</h1>
+                           <p className='text-sm font-normal'> Officer</p>
                         </div>
                     </div>
                     <div className='flex flex-row items-center border border-[#D35400] rounded-2xl shadow-lg hover:shadow-2xl transition-all bg-[#F5E1C8] p-6 gap-4'>
                         <div className='w-[84px] h-[84px]'>
-                          <Image src={"/rifat.jpg"} alt='team' width={150} height={150} className='w-full h-full border rounded-full'/>
+                          <Image src={"/team3.jfif"} alt='team' width={150} height={150} className='w-full h-full border rounded-full'/>
                         </div>
                         <div>
-                           <h1 className='text-lg font-semibold font-poppins'>Kevin Gilbert</h1>
-                           <p className='text-sm font-normal'>Chief Executive Officer</p>
+                           <h1 className='text-lg font-semibold font-poppins'>Jobar Gilbert</h1>
+                           <p className='text-sm font-normal'>Chief Executive </p>
                         </div>
                     </div>
 
