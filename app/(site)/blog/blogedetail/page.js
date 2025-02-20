@@ -29,8 +29,8 @@ const BlogDetail = () => {
         </div>
         </div>
         <div className=' w-[1024px] mx-auto px-3 my-[80px]'>
-            <div className=' '>
-                <Image src={'/jeera.jfif'} alt='unsplash_qhnutBbnzOc.png' width={900} height={900} className='w-full h-[300px] md:h-[400px] lg:h-[500px]'/>
+            <div className='w-full flex flex-row items-center justify-center'>
+                <Image src={'/jeera.jfif'} alt='unsplash_qhnutBbnzOc.png' width={900} height={900} className=' border border-[#E67E22] p-6 rounded-md w-[700px] h-[300px] md:h-[400px] lg:h-[500px]'/>
             </div>
 
             <div className=' '>

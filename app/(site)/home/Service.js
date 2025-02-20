@@ -4,27 +4,28 @@ import { BiSupport } from "react-icons/bi";
 
 const services = [
   {
-    title: "Fast Delivery",
-    description: "Get your products delivered in no time with our fast shipping service.",
+    title: "দ্রুত ডেলিভারি",
+    description: "আমাদের দ্রুত শিপিং পরিষেবার মাধ্যমে অল্প সময়েই আপনার পণ্য পান।",
     icon: <TbTruckDelivery />,
   },
   {
-    title: "Quality Guarantee",
-    description: "We ensure top-notch quality in all our products.",
+    title: "গুণগত মানের নিশ্চয়তা",
+    description: "আমরা আমাদের সকল পণ্যে সেরা মান নিশ্চিত করি।",
     icon: <PiSealCheck />,
   },
   {
-    title: "24/7 Support",
-    description: "Our team is available round the clock to assist you.",
+    title: "২৪/৭ সহায়তা",
+    description: "আমাদের টিম সার্বক্ষণিক আপনাকে সহায়তা করতে প্রস্তুত।",
     icon: <BiSupport />,
   },
 ];
+
 export default function Services() {
   
     return (
-      <section className="py-14 bg-[#F5E1C8]">
+      <section className="py-[120px] ">
         <div className="max-w-6xl mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold text-gray-800 mb-8">Our Services</h2>
+          {/* <h2 className="text-3xl font-bold text-gray-800 mb-8">Our Services</h2> */}
           <div className="grid md:grid-cols-3 gap-6">
             {services.map((service, index) => (
               <div

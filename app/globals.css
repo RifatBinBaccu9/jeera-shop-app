@@ -58,3 +58,6 @@
     @apply !p-3;
   }
 
+  :where(.css-dev-only-do-not-override-19lec04).ant-tooltip .ant-tooltip-inner {
+   @apply  !border !border-[#E67E22] !z-30;
+  }

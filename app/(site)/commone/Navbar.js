@@ -15,7 +15,7 @@ const linkNav = [
     { id : 1, href : "/", name : "Home" },
     { id : 2, href : "/about", name : "About" },
     { id : 3, href : "/shop/product", name : "Shop" },
-    { id : 4, href : "/blog", name : "Blog" },
+    { id : 4, href : "/blog/bloglist", name : "Blog" },
     { id : 5, href : "/contact", name : "Contact Us" },
 ]
 
@@ -62,11 +62,11 @@ const Navbar = () => {
         </div>
 
         {/* Login & Buy section */}
-        <div className=" lg:hidden flex flex-row items-center gap-3 sm:gap-4 lg:gap-5">
+        <div className=" flex flex-row items-center gap-3 sm:gap-4 lg:gap-5">
             <Link href={'/'}><IoMdHeartEmpty className="text-base sm:text-2xl lg:text-3xl text-[#222222] hover:text-[#D35400]"/></Link>
             <Link href={'/'}><HiOutlineShoppingBag className="text-base sm:text-2xl lg:text-3xl text-[#222222] hover:text-[#D35400]"/></Link>
             <Link href={'/auths'}><LuUserRound className="text-base sm:text-2xl lg:text-3xl text-[#222222] hover:text-[#D35400]"/></Link>
-            <div onClick={showDrawer}><CgMenuRightAlt  className="text-base sm:text-2xl lg:text-3xl text-[#222222] hover:text-[#D35400]"/></div>
+            <div onClick={showDrawer} className="lg:hidden "><CgMenuRightAlt  className="text-base sm:text-2xl lg:text-3xl text-[#222222] hover:text-[#D35400]"/></div>
         </div>
 
        {/* Drawer & Menu section */}

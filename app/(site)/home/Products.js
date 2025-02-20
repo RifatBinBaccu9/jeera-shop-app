@@ -1,7 +1,7 @@
 "use client";
 import Image from 'next/image'
 import Link from 'next/link'
-import { FaRegEye } from 'react-icons/fa';
+import { FaArrowRight, FaRegEye } from 'react-icons/fa';
 import { FaBangladeshiTakaSign } from "react-icons/fa6";
 import { TfiReload } from "react-icons/tfi";
 import { TbShoppingCart } from "react-icons/tb";
@@ -12,14 +12,14 @@ import { Tooltip } from 'antd';
 
 
 const Product = () => {
-  const [product, setProduct] = useState([]);
-  useEffect(() => {
-  fetch('/api/product.json')
-  .then((res) => res.json())
-  .then((data) => {
-    setProduct(data)
-  })
-  },[])
+    const [product, setProduct] = useState([]);
+    useEffect(() => {
+    fetch('/api/product.json')
+    .then((res) => res.json())
+    .then((data) => {
+      setProduct(data)
+    })
+    },[])
   
   const [priceData, setPriceData] = useState(null);
   const [productCount, SetProductCount] = useState(null);
@@ -41,10 +41,13 @@ const Product = () => {
   }, []);
   return (
     <div className=' container mb-[120px]'>
-        <h1 className='text-4xl font-bold font-poppins text-center'>FEATURED PRODUCTS</h1>
-        <div className='grid grid-cols-4 gap-6 mt-8'>
+        <div className=' flex flex-row justify-between items-center'>
+        <h1 className='text-4xl font-bold font-poppins text-center'>Featured Products</h1>
+        <Link href={'/shop/product'} className='flex flex-row items-center justify-center gap-2 text-base font-bold border border-[#FA8232] hover:border-[#ff7134] text-[#FA8232] hover:text-[#ff7134] hover:bg-[#F5E1C8] rounded-full px-5 py-2 '><span>All Product</span><FaArrowRight /></Link>
+        </div>
+        <div className='grid grid-cols-4 gap-6 mt-10'>
            {
-            product.slice(0,12).map((product) => (
+            product.slice(0,8).map((product) => (
                 <div key={product.id} className='border border-[#E67E22] bg-[#F5E1C8] rounded-lg p-5 relative '>
                 <div className='group'>
                 <Link href={`/shop/productdetail/${product.id}`} onClick={handleClick} >

@@ -16,11 +16,10 @@ import Link from "next/link";
 import { TbShoppingCart, TbTruckDelivery } from "react-icons/tb";
 import { RiCustomerService2Fill } from "react-icons/ri";
 import { useParams } from "next/navigation";
-import Product, { product } from "../../product/page";
 import { useContext, useEffect, useState } from "react";
 import { FiHeart } from "react-icons/fi";
 import { FaRegEye } from "react-icons/fa";
-import { UserContext } from "../../../context/UserContext";
+// import { UserContext } from "../../../context/UserContext";
 
 const categories = [
     {id : 1, image: "/jeera.jfif"},
@@ -35,6 +34,14 @@ const categories = [
 const Productdetails = () => {
     const {id} = useParams();
 
+    const [product, setProduct] = useState([]);
+  useEffect(() => {
+  fetch('/api/product.json')
+  .then((res) => res.json())
+  .then((data) => {
+    setProduct(data)
+  })
+  },[])
     const products = product.find(product => product.id == id);
     const { price } = products;
     const [selectedImage, setSelectedImage]= useState("/jeera.jfif");
