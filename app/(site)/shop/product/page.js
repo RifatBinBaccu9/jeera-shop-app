@@ -8,18 +8,11 @@ import { TbShoppingCart } from "react-icons/tb";
 import { FiHeart } from "react-icons/fi";
 import { useEffect, useState } from 'react';
 import { Tooltip } from 'antd';
+import { product } from '../../home/Products';
 
 
 
 const Product = () => {
-  const [product, setProduct] = useState([]);
-  useEffect(() => {
-  fetch('/api/product.json')
-  .then((res) => res.json())
-  .then((data) => {
-    setProduct(data)
-  })
-  },[])
   
   const [priceData, setPriceData] = useState(null);
   const [productCount, SetProductCount] = useState(null);
@@ -44,7 +37,7 @@ const Product = () => {
         <h1 className='text-4xl font-bold font-poppins text-center'>FEATURED PRODUCTS</h1>
         <div className='grid grid-cols-4 gap-6 mt-8'>
            {
-            product.slice(0,12).map((product) => (
+            product.map((product) => (
                 <div key={product.id} className='border border-[#E67E22] bg-[#F5E1C8] rounded-lg p-5 relative '>
                 <div className='group'>
                 <Link href={`/shop/productdetail/${product.id}`} onClick={handleClick} >

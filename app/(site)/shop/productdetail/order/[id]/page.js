@@ -6,8 +6,10 @@ import { useParams } from "next/navigation";
 import {  useEffect, useState } from "react";
 import { IoHomeOutline } from "react-icons/io5";
 import { MdKeyboardArrowRight } from "react-icons/md";
-import { product } from "../../../product/page";
 import {  Modal, Result } from "antd";
+import { product } from "../../[id]/page";
+
+
 
 export default function CheckoutPage() {
   

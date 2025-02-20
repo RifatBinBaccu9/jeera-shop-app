@@ -8,18 +8,12 @@ import Image from 'next/image';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa6';
 import { IoIosArrowRoundForward } from 'react-icons/io';
 import { FaRegUserCircle } from 'react-icons/fa';
+import { blogs } from '../../home/Blogs';
 
 
 
 const BlogList = () => {
-   const [blog, setBlog] = useState([]);
-   console.log(blog);
-   
-   useEffect(() => {
-       fetch(`/api/blog.json`)
-       .then(res => res.json())
-       .then(data => setBlog(data))
-   },[])
+  
   return (
     <div className=''>
         <div className=' py-[26px]'>
@@ -55,7 +49,7 @@ const BlogList = () => {
             <div>
                <div className=' grid md:grid-cols-3 gap-6 mt-6'>
                 {
-                    blog.map(cardList =>(
+                    blogs.map(cardList =>(
                         <div key={cardList.id} className='border border-[#FA8232] p-[32px] rounded-md'> 
                         <div className='w-full rounded-md h-[280px]'>
                             <Image src={cardList.image} alt='image' width={100} height={100} className='w-full h-full'/>

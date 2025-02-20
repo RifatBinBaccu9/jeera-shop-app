@@ -16,10 +16,204 @@ import Link from "next/link";
 import { TbShoppingCart, TbTruckDelivery } from "react-icons/tb";
 import { RiCustomerService2Fill } from "react-icons/ri";
 import { useParams } from "next/navigation";
-import { useContext, useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
 import { FiHeart } from "react-icons/fi";
 import { FaRegEye } from "react-icons/fa";
-// import { UserContext } from "../../../context/UserContext";
+
+export const product = [
+  {
+    "id": 1,
+    "name": "এপ্রিকট (Apricot) – 1KG",
+    "price": 120,
+    "oldPrice": 1999,
+    "discount": "21% OFF",
+    "rating": 4.7,
+    "feedback": "21,671 User feedback",
+    "sku": "A264671",
+    "availability": "In Stock",
+    "brand": "Apple",
+    "category": "Fruits",
+    "description": "এক গ্লাস পানিতে দুই চামচ সিড মিক্স, একটু মধু ও একটু পিঙ্ক সল্ট মিশিয়ে সহজেই সরবত বানিয়ে খেতে পারেন।",
+    "image": "/jeera3.jfif",
+    "image2": "/jeera1.jfif"
+  },
+  {
+    "id": 2,
+    "name": "কালোজিরা (Black Cumin) – 1KG",
+    "price": 500,
+    "oldPrice": 750,
+    "discount": "15% OFF",
+    "rating": 4.8,
+    "feedback": "12,534 User feedback",
+    "sku": "B265432",
+    "availability": "In Stock",
+    "brand": "Organic Farms",
+    "category": "Spices & Herbs",
+    "description": "বিশুদ্ধ কালোজিরা, যা স্বাস্থ্যের জন্য অত্যন্ত উপকারী।",
+    "image": "/jeera3.jfif",
+    "image2": "/jeera1.jfif"
+  },
+  {
+    "id": 3,
+    "name": "ধনিয়া (Coriander) – 1KG",
+    "price": 320,
+    "oldPrice": 450,
+    "discount": "10% OFF",
+    "rating": 4.5,
+    "feedback": "8,927 User feedback",
+    "sku": "C298743",
+    "availability": "In Stock",
+    "brand": "Herbal Spice",
+    "category": "Spices & Herbs",
+    "description": "তাজা ও সুগন্ধিযুক্ত ধনিয়া, যা খাবারের স্বাদ ও গন্ধ বাড়ায়।",
+    "image": "/jeera3.jfif",
+    "image2": "/jeera1.jfif"
+  },
+  {
+    "id": 4,
+    "name": "মেথি (Fenugreek) – 1KG",
+    "price": 280,
+    "oldPrice": 380,
+    "discount": "8% OFF",
+    "rating": 4.6,
+    "feedback": "6,823 User feedback",
+    "sku": "F295761",
+    "availability": "In Stock",
+    "brand": "Organic Spice",
+    "category": "Spices & Herbs",
+    "description": "খাঁটি মেথি, যা হজমের জন্য উপকারী।",
+    "image": "/jeera3.jfif",
+    "image2": "/jeera1.jfif"
+  },
+  {
+    "id": 5,
+    "name": "গোল মরিচ (Black Pepper) – 500GM",
+    "price": 650,
+    "oldPrice": 850,
+    "discount": "12% OFF",
+    "rating": 4.9,
+    "feedback": "15,238 User feedback",
+    "sku": "P264573",
+    "availability": "In Stock",
+    "brand": "Pure Spices",
+    "category": "Spices & Herbs",
+    "description": "উচ্চমানের গোল মরিচ, যা মশলা হিসেবে ব্যবহৃত হয়।",
+    "image": "/jeera.jfif",
+    "image2": "/jeera2.jfif"
+  },
+  {
+    "id": 6,
+    "name": "এলাচ (Cardamom) – 250GM",
+    "price": 900,
+    "oldPrice": 1200,
+    "discount": "18% OFF",
+    "rating": 4.7,
+    "feedback": "9,532 User feedback",
+    "sku": "E264892",
+    "availability": "In Stock",
+    "brand": "Premium Spices",
+    "category": "Spices & Herbs",
+    "description": "সুগন্ধি এলাচ, যা রান্নায় অতুলনীয় স্বাদ যোগ করে।",
+    "image": "/jeera.jfif",
+    "image2": "/jeera2.jfif"
+  },
+  {
+    "id": 7,
+    "name": "লবঙ্গ (Cloves) – 250GM",
+    "price": 550,
+    "oldPrice": 750,
+    "discount": "15% OFF",
+    "rating": 4.8,
+    "feedback": "7,412 User feedback",
+    "sku": "L287912",
+    "availability": "In Stock",
+    "brand": "Herbal Essence",
+    "category": "Spices & Herbs",
+    "description": "খাঁটি লবঙ্গ, যা রান্না ও স্বাস্থ্য উপকারিতার জন্য বিখ্যাত।",
+    "image": "/jeera.jfif",
+    "image2": "/jeera2.jfif"
+  },
+  {
+    "id": 8,
+    "name": "দারুচিনি (Cinnamon) – 500GM",
+    "price": 400,
+    "oldPrice": 600,
+    "discount": "10% OFF",
+    "rating": 4.6,
+    "feedback": "11,895 User feedback",
+    "sku": "D278346",
+    "availability": "In Stock",
+    "brand": "Organic Spice",
+    "category": "Spices & Herbs",
+    "description": "সুগন্ধি দারুচিনি, যা রান্নায় ব্যবহৃত হয়।",
+    "image": "/jeera.jfif",
+    "image2": "/jeera2.jfif"
+  },
+  {
+    "id": 9,
+    "name": "মধু (Honey) – 1KG",
+    "price": 750,
+    "oldPrice": 950,
+    "discount": "10% OFF",
+    "rating": 4.9,
+    "feedback": "25,342 User feedback",
+    "sku": "H298734",
+    "availability": "In Stock",
+    "brand": "Natural Honey",
+    "category": "Organic Products",
+    "description": "খাঁটি মধু, যা স্বাস্থ্যের জন্য উপকারী।",
+    "image": "/honey.jfif",
+    "image2": "/honey2.jfif"
+  },
+  {
+    "id": 10,
+    "name": "বিস্কুট (Biscuits) – 500GM",
+    "price": 200,
+    "oldPrice": 250,
+    "discount": "5% OFF",
+    "rating": 4.3,
+    "feedback": "5,342 User feedback",
+    "sku": "B334765",
+    "availability": "In Stock",
+    "brand": "Fresh Bites",
+    "category": "Snacks",
+    "description": "স্বাস্থ্যকর ও মজাদার বিস্কুট।",
+    "image": "/biscuits.jfif",
+    "image2": "/biscuits2.jfif"
+  },
+  {
+    "id": 11,
+    "name": "বাদাম (Almonds) – 1KG",
+    "price": 1200,
+    "oldPrice": 1500,
+    "discount": "20% OFF",
+    "rating": 4.8,
+    "feedback": "9,872 User feedback",
+    "sku": "A332765",
+    "availability": "In Stock",
+    "brand": "Nutri Nuts",
+    "category": "Dry Fruits",
+    "description": "সুস্বাদু ও স্বাস্থ্যকর বাদাম।",
+    "image": "/almonds.jfif",
+    "image2": "/almonds2.jfif"
+  },
+  {
+    "id": 12,
+    "name": "পেস্তা (Pistachios) – 500GM",
+    "price": 1600,
+    "oldPrice": 1900,
+    "discount": "15% OFF",
+    "rating": 4.7,
+    "feedback": "8,452 User feedback",
+    "sku": "P392874",
+    "availability": "In Stock",
+    "brand": "Nutri Nuts",
+    "category": "Dry Fruits",
+    "description": "পেস্তা বাদাম, যা স্বাস্থ্য উপকারী ও পুষ্টিকর।",
+    "image": "/pistachios.jfif",
+    "image2": "/pistachios2.jfif"
+  }
+]
 
 const categories = [
     {id : 1, image: "/jeera.jfif"},
@@ -34,16 +228,10 @@ const categories = [
 const Productdetails = () => {
     const {id} = useParams();
 
-    const [product, setProduct] = useState([]);
-  useEffect(() => {
-  fetch('/api/product.json')
-  .then((res) => res.json())
-  .then((data) => {
-    setProduct(data)
-  })
-  },[])
     const products = product.find(product => product.id == id);
-    const { price } = products;
+   console.log(products);
+   
+
     const [selectedImage, setSelectedImage]= useState("/jeera.jfif");
 
     const productfilter = product.filter(product => product.id !== id);
@@ -158,33 +346,33 @@ const Productdetails = () => {
           <div className="flex flex-col sm:flex-row items-center gap-[6px]">
             <div className="flex flex-row gap-2 items-center">
             <div className=""><Rate disabled defaultValue={4} /></div>
-            <div className="text-sm font-semibold">4.7 Star Rating</div>
+            <div className="text-sm font-semibold">{products.rating} Star Rating</div>
             </div>
-            <div className="text-sm font-normal">(21,671 User feedback)</div>
+            <div className="text-sm font-normal">({products.reviews} User feedback)</div>
           </div>
 
           <div className="sm:gap-3 gap-0 mt-4">
             <div className="grid grid-cols-2 justify-between items-center">
-               <span><span className="text-sm font-normal text-[#5F6C72]">Sku:</span> <span  className="text-sm font-medium text-black">A264671</span></span>
-               <span><span className="text-sm font-normal text-[#5F6C72]">Availability:</span > <span className="text-sm font-medium text-black">In Stock</span></span>
+               <span><span className="text-sm font-normal text-[#5F6C72]">Sku:</span> <span  className="text-sm font-medium text-black">{products.sku}</span></span>
+               <span><span className="text-sm font-normal text-[#5F6C72]">Availability:</span > <span className="text-sm font-medium text-black">{products.availability}</span></span>
             </div>
             <div className="grid grid-cols-2 justify-between items-center">
-            <span><span className="text-sm font-normal text-[#5F6C72]">Brand:</span> <span  className="text-sm font-medium text-black">Apple</span></span>
-            <span><span className="text-sm font-normal text-[#5F6C72]">Category:</span> <span  className="text-sm font-medium text-black">Electronics Devices</span></span>
+            <span><span className="text-sm font-normal text-[#5F6C72]">Brand:</span> <span  className="text-sm font-medium text-black">{products.brand}</span></span>
+            <span><span className="text-sm font-normal text-[#5F6C72]">Category:</span> <span  className="text-sm font-medium text-black">{products.category}</span></span>
             </div>
           </div>
 
           <div className="flex flex-row items-center justify-center sm:justify-start py-6">
             <div className="flex flex-row items-center">
-             <span className="text-2xl font-semibold text-[#E67E22]">${price}.00</span>
-             <span className="text-lg font-normal text-[#5F6C72] line-through ml-1">$1999.00</span>
+             <span className="text-2xl font-semibold text-[#E67E22]">${products.price}.00</span>
+             <span className="text-lg font-normal text-[#5F6C72] line-through ml-1">${products.oldPrice}.00</span>
             </div>
             <div>
-                <h3 className="text-sm font-semibold px-[10px] py-[5px] bg-[#EFD33D] text-black rounded-sm ml-3">21% OFF</h3>
+                <h3 className="text-sm font-semibold px-[10px] py-[5px] bg-[#EFD33D] text-black rounded-sm ml-3">{products.discount}F</h3>
             </div>
           </div>
           
-          <h1 className="text-lg font-normal font-poppins mb-5">এক গ্লাস পানিতে দুই চামচ সিড মিক্স, একটু মধু ও একটু পিঙ্ক সল্ট মিশিয়ে সহজেই সরবত বা জুস বানিয়ে খেতে পারেন সিড মিক্স কম্বো। এটি আপনাকে সহজেই হাইড্রেটেড রাখবে এবং তৃষ্ণা বা পানিশূন্যতা মেটাতে সহায়তা করবে।</h1>
+          <h1 className="text-lg font-normal font-poppins mb-5">{products.description}</h1>
           <hr className="border "/>
 
           

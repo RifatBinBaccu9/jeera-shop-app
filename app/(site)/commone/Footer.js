@@ -22,10 +22,10 @@ const Footer = () => {
      
      <div className="lg:flex justify-between font-jost w-full lg:gap-[100px] ">
       <div className="">
-        <div className="flex flex-row items-center mb-7">
-        <Image src="/logo2.png" alt="logo" width={60} height={60} className="w-[70px] h-[70px] "/>
-        <h1 className="text-[32px] font-bold font-poppins ">ZiranGo</h1>
-        </div>
+         <div className="flex flex-row items-center justify-center sm:justify-start mb-6">
+                    <Image src={'/logo2.png'} alt="logo" width={50} height={50} className="w-[45px] sm:w-[70px] lg:w-[90px] h-[45px] sm:h-[70px] lg:h-[90px] "/>
+                    <h1 className="text-xl sm:text-3xl text-[40px] font-bold font-poppins text-[#222222]">ZiranGo</h1>
+                </div>
 
          <div className="sm:flex lg:flex-col sm:flex-row lg:justify-start justify-between lg:space-y-5 lg:mb-0 mb-8  lg:space-x-0 sm:space-x-5 sm:space-y-0 space-y-3">
           <p className="flex gap-2"><MdOutlinePhoneInTalk className=" w-6 h-6"/><span className="text-base font-jost font-normal lg:w-[258px] w-full">(704) 555-0127</span></p>
@@ -55,7 +55,7 @@ const Footer = () => {
         </ul>
        </div>
 
-      <div className="sm:col-span-1 col-span-3 sm:mt-0 mt-5 ">
+      <div className="sm:col-span-1 col-span-4 sm:mt-0 mt-5 ">
         <h1 className="text-base font-bold">Subscribe</h1>
         <p className="py-5 font-normal">Enter your email below to be the first to know
         about new collections and product launches.</p>
@@ -72,7 +72,7 @@ const Footer = () => {
 
   
   <hr className="mt-[50px] border "/>
-        <div className="container flex sm:flex-row flex-col sm:justify-between justify-center items-center py-2">
+        <div className="sm:container flex sm:flex-row flex-col sm:justify-between justify-center items-center  py-2">
           <div className="">
            <Image src="/cashon.png" alt="visa" width={100} height={100} className="w-full h-full"/>
           </div>
