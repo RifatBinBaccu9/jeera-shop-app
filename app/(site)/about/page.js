@@ -1,26 +1,261 @@
+"use client";
+import { Tooltip } from 'antd';
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import { useEffect, useState } from 'react'
 import { BsCheckAll } from 'react-icons/bs'
+import { FaArrowRight, FaRegEye } from 'react-icons/fa'
+import { FaBangladeshiTakaSign } from 'react-icons/fa6'
+import { FiHeart } from 'react-icons/fi'
+import { TbShoppingCart } from 'react-icons/tb'
+import { TfiReload } from 'react-icons/tfi'
+
+export const product = [
+  {
+    "id": 1,
+    "name": "এপ্রিকট (Apricot) – 1KG",
+    "price": 120,
+    "oldPrice": 1999,
+    "discount": "21% OFF",
+    "rating": 4.7,
+    "feedback": "21,671 User feedback",
+    "sku": "A264671",
+    "availability": "In Stock",
+    "brand": "Apple",
+    "category": "Fruits",
+    "description": "এক গ্লাস পানিতে দুই চামচ সিড মিক্স, একটু মধু ও একটু পিঙ্ক সল্ট মিশিয়ে সহজেই সরবত বানিয়ে খেতে পারেন।",
+    "image": "/Apricot1.jfif",
+    "image2": "/Apricot2.jfif"
+  },
+  {
+    "id": 2,
+    "name": "কালোজিরা (Black Cumin) – 1KG",
+    "price": 500,
+    "oldPrice": 750,
+    "discount": "15% OFF",
+    "rating": 4.8,
+    "feedback": "12,534 User feedback",
+    "sku": "B265432",
+    "availability": "In Stock",
+    "brand": "Organic Farms",
+    "category": "Spices & Herbs",
+    "description": "বিশুদ্ধ কালোজিরা, যা স্বাস্থ্যের জন্য অত্যন্ত উপকারী।",
+    "image": "/BlackCumin1.jfif",
+    "image2": "/BlackCumin2.jfif"
+  },
+  {
+    "id": 3,
+    "name": "ধনিয়া (Coriander) – 1KG",
+    "price": 320,
+    "oldPrice": 450,
+    "discount": "10% OFF",
+    "rating": 4.5,
+    "feedback": "8,927 User feedback",
+    "sku": "C298743",
+    "availability": "In Stock",
+    "brand": "Herbal Spice",
+    "category": "Spices & Herbs",
+    "description": "তাজা ও সুগন্ধিযুক্ত ধনিয়া, যা খাবারের স্বাদ ও গন্ধ বাড়ায়।",
+    "image": "/Coriander1.jfif",
+    "image2": "/Coriander2.jfif"
+  },
+  {
+    "id": 4,
+    "name": "মেথি (Fenugreek) – 1KG",
+    "price": 280,
+    "oldPrice": 380,
+    "discount": "8% OFF",
+    "rating": 4.6,
+    "feedback": "6,823 User feedback",
+    "sku": "F295761",
+    "availability": "In Stock",
+    "brand": "Organic Spice",
+    "category": "Spices & Herbs",
+    "description": "খাঁটি মেথি, যা হজমের জন্য উপকারী।",
+    "image": "/Fenugreek1.jfif",
+    "image2": "/Fenugreek2.jfif"
+  },
+  {
+    "id": 5,
+    "name": "গোল মরিচ (Black Pepper) – 500GM",
+    "price": 650,
+    "oldPrice": 850,
+    "discount": "12% OFF",
+    "rating": 4.9,
+    "feedback": "15,238 User feedback",
+    "sku": "P264573",
+    "availability": "In Stock",
+    "brand": "Pure Spices",
+    "category": "Spices & Herbs",
+    "description": "উচ্চমানের গোল মরিচ, যা মশলা হিসেবে ব্যবহৃত হয়।",
+    "image": "/BlackPepper1.jfif",
+    "image2": "/BlackPepper2.jfif"
+  },
+  {
+    "id": 6,
+    "name": "এলাচ (Cardamom) – 250GM",
+    "price": 900,
+    "oldPrice": 1200,
+    "discount": "18% OFF",
+    "rating": 4.7,
+    "feedback": "9,532 User feedback",
+    "sku": "E264892",
+    "availability": "In Stock",
+    "brand": "Premium Spices",
+    "category": "Spices & Herbs",
+    "description": "সুগন্ধি এলাচ, যা রান্নায় অতুলনীয় স্বাদ যোগ করে।",
+    "image": "/Cardamom1.jfif",
+    "image2": "/Cardamom2.jfif"
+  },
+  {
+    "id": 7,
+    "name": "লবঙ্গ (Cloves) – 250GM",
+    "price": 550,
+    "oldPrice": 750,
+    "discount": "15% OFF",
+    "rating": 4.8,
+    "feedback": "7,412 User feedback",
+    "sku": "L287912",
+    "availability": "In Stock",
+    "brand": "Herbal Essence",
+    "category": "Spices & Herbs",
+    "description": "খাঁটি লবঙ্গ, যা রান্না ও স্বাস্থ্য উপকারিতার জন্য বিখ্যাত।",
+    "image": "/Cloves1.jfif",
+    "image2": "/Cloves2.jfif"
+  },
+  {
+    "id": 8,
+    "name": "দারুচিনি (Cinnamon) – 500GM",
+    "price": 400,
+    "oldPrice": 600,
+    "discount": "10% OFF",
+    "rating": 4.6,
+    "feedback": "11,895 User feedback",
+    "sku": "D278346",
+    "availability": "In Stock",
+    "brand": "Organic Spice",
+    "category": "Spices & Herbs",
+    "description": "সুগন্ধি দারুচিনি, যা রান্নায় ব্যবহৃত হয়।",
+    "image": "/Cinnamon1.jfif",
+    "image2": "/Cinnamon2.jfif"
+  },
+  {
+    "id": 9,
+    "name": "মধু (Honey) – 1KG",
+    "price": 750,
+    "oldPrice": 950,
+    "discount": "10% OFF",
+    "rating": 4.9,
+    "feedback": "25,342 User feedback",
+    "sku": "H298734",
+    "availability": "In Stock",
+    "brand": "Natural Honey",
+    "category": "Organic Products",
+    "description": "খাঁটি মধু, যা স্বাস্থ্যের জন্য উপকারী।",
+    "image": "/honey.jfif",
+    "image2": "/honey2.jfif"
+  },
+  {
+    "id": 10,
+    "name": "বিস্কুট (Biscuits) – 500GM",
+    "price": 200,
+    "oldPrice": 250,
+    "discount": "5% OFF",
+    "rating": 4.3,
+    "feedback": "5,342 User feedback",
+    "sku": "B334765",
+    "availability": "In Stock",
+    "brand": "Fresh Bites",
+    "category": "Snacks",
+    "description": "স্বাস্থ্যকর ও মজাদার বিস্কুট।",
+    "image": "/biscuits.jfif",
+    "image2": "/biscuits2.jfif"
+  },
+  {
+    "id": 11,
+    "name": "বাদাম (Almonds) – 1KG",
+    "price": 1200,
+    "oldPrice": 1500,
+    "discount": "20% OFF",
+    "rating": 4.8,
+    "feedback": "9,872 User feedback",
+    "sku": "A332765",
+    "availability": "In Stock",
+    "brand": "Nutri Nuts",
+    "category": "Dry Fruits",
+    "description": "সুস্বাদু ও স্বাস্থ্যকর বাদাম।",
+    "image": "/almonds.jfif",
+    "image2": "/almonds2.jfif"
+  },
+  {
+    "id": 12,
+    "name": "পেস্তা (Pistachios) – 500GM",
+    "price": 1600,
+    "oldPrice": 1900,
+    "discount": "15% OFF",
+    "rating": 4.7,
+    "feedback": "8,452 User feedback",
+    "sku": "P392874",
+    "availability": "In Stock",
+    "brand": "Nutri Nuts",
+    "category": "Dry Fruits",
+    "description": "পেস্তা বাদাম, যা স্বাস্থ্য উপকারী ও পুষ্টিকর।",
+    "image": "/pistachios.jfif",
+    "image2": "/pistachios2.jfif"
+  }
+]
 
 const About = () => {
+   
+    const [priceData, setPriceData] = useState(null);
+    const [productCount, SetProductCount] = useState(null);
+  
+    const handleClick = () => {
+      if (priceData) {
+        localStorage.removeItem("updatePrice");
+      }
+      if (productCount) {
+        localStorage.removeItem("productCount");
+      }
+    };
+  
+    useEffect(() => {
+      if ( window !== "undefined") {
+        setPriceData(localStorage.getItem("updatePrice"));
+        SetProductCount(localStorage.getItem("productCount"));
+      }
+    }, []);
   return (
     <div className=' '>
       <div className='container flex flex-col-reverse lg:flex-row justify-between items-center mt-[72px] mb-[124px] gap-10 xl:gap-[136px]'>
       <div className='w-full lg:w-[536px]'>
-            <Link href={"#"} className='text-sm font-semibold px-4 py-2 bg-[#2DA5F3] rounded-sm'>WHO WE ARE</Link>
-            <h1 className='text-2xl sm:text-4xl lg:text-3xl xl:text-[40px] font-semibold mt-3 mb-6'>Kinbo - largest electronics retail shop in the world.</h1>
-            <p className='text-base text-[#475156] font-normal mt-6 mb-[32px]'>Pellentesque ultrices, dui vel hendrerit iaculis, ipsum velit vestibulum risus, ac tincidunt diam lectus id magna. Praesent maximus lobortis neque sit amet rhoncus. Nullam tempus lectus a dui aliquet, non ultricies nibh elementum. Nulla ac nulla dolor. </p>
-            <ul>
-                <li className='flex flex-row items-center mb-4 gap-3'><BsCheckAll className='w-6 h-6 text-[#2DB224]'/><span className='text-base font-normal'>Great 24/7 customer services.</span></li>
-                <li className='flex flex-row items-center mb-4 gap-3'><BsCheckAll className='w-6 h-6 text-[#2DB224]'/><span className='text-base font-normal'>600+ Dedicated employe.</span></li>
-                <li className='flex flex-row items-center mb-4 gap-3'><BsCheckAll className='w-6 h-6 text-[#2DB224]'/><span className='text-base font-normal'>50+ Branches all over the world.</span></li>
-                <li className='flex flex-row items-center mb-4 gap-3'><BsCheckAll className='w-6 h-6 text-[#2DB224]'/><span className='text-base font-normal'>Over 1 Million Electronics Products</span></li>
-            </ul>
-        </div>
+    <Link href={"#"} className='text-sm font-semibold px-4 py-2 bg-[#2DA5F3] rounded-sm'>WHO WE ARE</Link>
+    <h1 className='text-2xl sm:text-4xl lg:text-3xl xl:text-[40px] font-bold  mt-10 mb-6' style={{lineHeight:"60px"}}>
+        খাঁটি জিরার বিশ্বস্ত ঠিকানা - সেরা মানের জিরা পান এখন সহজেই!
+    </h1>
+    <p className='text-base text-[#475156] font-normal mt-6 mb-[32px]'>
+        আমরা সরাসরি খামার থেকে সেরা মানের খাঁটি জিরা সংগ্রহ করি, যা সুগন্ধ ও স্বাদে অনন্য। 
+        আমাদের জিরা ১০০% বিশুদ্ধ এবং স্বাস্থ্যসম্মত, যা আপনার রান্নার স্বাদ ও পুষ্টি বাড়াবে।
+    </p>
+    <ul>
+        <li className='flex flex-row items-center mb-4 gap-3'>
+            <BsCheckAll className='w-6 h-6 text-[#2DB224]'/><span className='text-base font-normal'>২৪/৭ গ্রাহক সেবা নিশ্চিত।</span>
+        </li>
+        <li className='flex flex-row items-center mb-4 gap-3'>
+            <BsCheckAll className='w-6 h-6 text-[#2DB224]'/><span className='text-base font-normal'>৫০০+ বিশ্বস্ত কৃষকের সহযোগিতায় বিশুদ্ধ জিরা সরবরাহ।</span>
+        </li>
+        <li className='flex flex-row items-center mb-4 gap-3'>
+            <BsCheckAll className='w-6 h-6 text-[#2DB224]'/><span className='text-base font-normal'>দেশজুড়ে ৫০+ বিক্রয় কেন্দ্র।</span>
+        </li>
+        <li className='flex flex-row items-center mb-4 gap-3'>
+            <BsCheckAll className='w-6 h-6 text-[#2DB224]'/><span className='text-base font-normal'>১ মিলিয়নেরও বেশি সন্তুষ্ট গ্রাহক।</span>
+        </li>
+    </ul>
+</div>
+
 
         <div className='w-full lg:w-[648px]'>
-            <Image src={'/about.png'} alt='aboutpng' width={648} height={536} className='w-full '/>
+            <Image src={'/jeera-seeds.webp'} alt='aboutpng' width={648} height={536} className='w-full '/>
         </div>
       </div>
 
@@ -28,221 +263,97 @@ const About = () => {
 
 
 
-      <div className='container my-[72px]'>
-                <h1 className='text-[32px] font-semibold mb-[40px] text-center'>Our core team member</h1>
+      <div className='container my-[120px]'>
+                <h1 className='text-4xl font-bold font-poppins mb-[40px] text-center'>Our Team Member</h1>
 
                 <div className='grid sm:grid-cols-2 lg:grid-cols-4 gap-6'>
 
-                    <div className='flex flex-row items-center border border-[#E4E7E9] rounded-sm p-6 gap-4'>
-                        <div className='w-[64px] h-[64px]'>
-                          <Image src={"/team1.png"} alt='team' width={100} height={100} className='w-full h-full'/>
+                    <div className='flex flex-row items-center border border-[#D35400] rounded-2xl shadow-lg hover:shadow-2xl transition-all bg-[#F5E1C8] p-6 gap-4'>
+                        <div className='w-[84px] h-[84px]'>
+                          <Image src={"/rifat.jpg"} alt='team' width={150} height={150} className='w-full h-full border rounded-full'/>
                         </div>
                         <div>
-                           <h1 className='text-base font-semibold'>Kevin Gilbert</h1>
+                           <h1 className='text-lg font-semibold font-poppins'>Kevin Gilbert</h1>
+                           <p className='text-sm font-normal'>Chief Executive Officer</p>
+                        </div>
+                    </div>
+                    <div className='flex flex-row items-center border border-[#D35400] rounded-2xl shadow-lg hover:shadow-2xl transition-all bg-[#F5E1C8] p-6 gap-4'>
+                        <div className='w-[84px] h-[84px]'>
+                          <Image src={"/rifat.jpg"} alt='team' width={150} height={150} className='w-full h-full border rounded-full'/>
+                        </div>
+                        <div>
+                           <h1 className='text-lg font-semibold font-poppins'>Kevin Gilbert</h1>
+                           <p className='text-sm font-normal'>Chief Executive Officer</p>
+                        </div>
+                    </div>
+                    <div className='flex flex-row items-center border border-[#D35400] rounded-2xl shadow-lg hover:shadow-2xl transition-all bg-[#F5E1C8] p-6 gap-4'>
+                        <div className='w-[84px] h-[84px]'>
+                          <Image src={"/rifat.jpg"} alt='team' width={150} height={150} className='w-full h-full border rounded-full'/>
+                        </div>
+                        <div>
+                           <h1 className='text-lg font-semibold font-poppins'>Kevin Gilbert</h1>
+                           <p className='text-sm font-normal'>Chief Executive Officer</p>
+                        </div>
+                    </div>
+                    <div className='flex flex-row items-center border border-[#D35400] rounded-2xl shadow-lg hover:shadow-2xl transition-all bg-[#F5E1C8] p-6 gap-4'>
+                        <div className='w-[84px] h-[84px]'>
+                          <Image src={"/rifat.jpg"} alt='team' width={150} height={150} className='w-full h-full border rounded-full'/>
+                        </div>
+                        <div>
+                           <h1 className='text-lg font-semibold font-poppins'>Kevin Gilbert</h1>
                            <p className='text-sm font-normal'>Chief Executive Officer</p>
                         </div>
                     </div>
 
-                    <div className='flex flex-row items-center border border-[#E4E7E9] rounded-sm p-6 gap-4'>
-                        <div className='w-[64px] h-[64px]'>
-                          <Image src={"/team2.png"} alt='team' width={100} height={100} className='w-full h-full'/>
-                        </div>
-                        <div>
-                           <h1 className='text-base font-semibold'>Kevin Gilbert</h1>
-                           <p className='text-sm font-normal'>Chief Executive Officer</p>
-                        </div>
-                    </div>
-
-                    <div className='flex flex-row items-center border border-[#E4E7E9] rounded-sm p-6 gap-4'>
-                        <div className='w-[64px] h-[64px]'>
-                          <Image src={"/team3.png"} alt='team' width={100} height={100} className='w-full h-full'/>
-                        </div>
-                        <div>
-                           <h1 className='text-base font-semibold'>Kevin Gilbert</h1>
-                           <p className='text-sm font-normal'>Chief Executive Officer</p>
-                        </div>
-                    </div>
-
-                    <div className='flex flex-row items-center border border-[#E4E7E9] rounded-sm p-6 gap-4'>
-                        <div className='w-[64px] h-[64px]'>
-                          <Image src={"/team4.png"} alt='team' width={100} height={100} className='w-full h-full'/>
-                        </div>
-                        <div>
-                           <h1 className='text-base font-semibold'>Kevin Gilbert</h1>
-                           <p className='text-sm font-normal'>Chief Executive Officer</p>
-                        </div>
-                    </div>
-
-                    <div className='flex flex-row items-center border border-[#E4E7E9] rounded-sm p-6 gap-4'>
-                        <div className='w-[64px] h-[64px]'>
-                          <Image src={"/team5.png"} alt='team' width={100} height={100} className='w-full h-full'/>
-                        </div>
-                        <div>
-                           <h1 className='text-base font-semibold'>Kevin Gilbert</h1>
-                           <p className='text-sm font-normal'>Chief Executive Officer</p>
-                        </div>
-                    </div>
                     
-                    <div className='flex flex-row items-center border border-[#E4E7E9] rounded-sm p-6 gap-4'>
-                        <div className='w-[64px] h-[64px]'>
-                          <Image src={"/team6.png"} alt='team' width={100} height={100} className='w-full h-full'/>
-                        </div>
-                        <div>
-                           <h1 className='text-base font-semibold'>Kevin Gilbert</h1>
-                           <p className='text-sm font-normal'>Chief Executive Officer</p>
-                        </div>
-                    </div>
-
-                    <div className='flex flex-row items-center border border-[#E4E7E9] rounded-sm p-6 gap-4'>
-                        <div className='w-[64px] h-[64px]'>
-                          <Image src={"/team7.png"} alt='team' width={100} height={100} className='w-full h-full'/>
-                        </div>
-                        <div>
-                           <h1 className='text-base font-semibold'>Kevin Gilbert</h1>
-                           <p className='text-sm font-normal'>Chief Executive Officer</p>
-                        </div>
-                    </div>
-
-                    <div className='flex flex-row items-center border border-[#E4E7E9] rounded-sm p-6 gap-4'>
-                        <div className='w-[64px] h-[64px]'>
-                          <Image src={"/team8.png"} alt='team' width={100} height={100} className='w-full h-full'/>
-                        </div>
-                        <div>
-                           <h1 className='text-base font-semibold'>Kevin Gilbert</h1>
-                           <p className='text-sm font-normal'>Chief Executive Officer</p>
-                        </div>
-            </div>
         </div>
       </div>
 
       <div>
-
-        <div className='container my-[72px] sm:grid grid-cols-2 xl:grid-cols-4 gap-6 space-y-3 sm:space-y-0'>
+        
+        <div className='container my-[72px]'>
            
-           <div className=' space-y-4 '>
-           <h1 className='text-base font-semibold mb-4'>FLASH SALE TODAY</h1>
+        <div className=' flex flex-row justify-between items-center'>
+        <h1 className='text-2xl font-semibold font-poppins mb-4'>Related Products</h1>
+        <Link href={'/shop/product'} className='hidden sm:flex flex-row items-center justify-center gap-2 text-base font-bold border border-[#FA8232] hover:border-[#ff7134] text-[#FA8232] hover:text-[#ff7134] hover:bg-[#F5E1C8] rounded-full px-5 py-2 '><span>All Product</span><FaArrowRight /></Link>
+        </div>
+           <div className='grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-10'>
+           {
+            product.slice(0,8).map((product) => (
+                <div key={product.id} className='border border-[#E67E22] bg-[#F5E1C8] rounded-lg p-5 relative '>
+                <div className='group'>
+                <Link href={`/shop/productdetail/${product.id}`} onClick={handleClick} >
+                <Image src={product.image} alt='jeera' width={100} height={100} className='w-full h-[300px]'/>
+                </Link>
+                <div className='hidden group-hover:block transition-all delay-700 duration-1000 absolute top-0 right-0 inset-x-0 p-5 z-10'>
+                <Link href={`/shop/productdetail/${product.id}`} onClick={handleClick} >
+                <Image src={product.image2} alt='jeera' width={100} height={100} className='w-full h-[300px]'/>
+                </Link>
+                </div>
+                <div className=' z-50 group-hover:flex flex-col gap-2 hidden  transition-all delay-700 duration-1000 absolute top-5 right-5  p-6 '>
+                <div className='bg-white text-black p-2 rounded-full cursor-pointer hover:bg-[#E67E22] hover:text-[#fff]'><TfiReload className='text-xl '/></div>
+                <div className='bg-white text-black p-2 rounded-full cursor-pointer hover:bg-[#E67E22] hover:text-[#fff]'><FiHeart className='text-xl '/></div>
+                <Link href={`/shop/productdetail/${product.id}`} className='bg-white text-black p-2 rounded-full cursor-pointer hover:bg-[#E67E22] hover:text-[#fff]'> <FaRegEye className='text-xl '/></Link>
+                </div>
+                </div>
+                <div className='mt-6'>
+                <Tooltip title={product.name}>
+                 <Link href={`/shop/productdetail/${product.id}`} onClick={handleClick}  className='text-xl font-semibold font-poppins text-[#222222] hover:text-[#D35400] line-clamp-1'>{product.name}</Link>
+                 </Tooltip>
+                 <p className='text-lg font-bold text-[#E67E22] flex flex-row items-center gap-1 my-3'><span>{product.price}</span><FaBangladeshiTakaSign className='text-base'/></p>
+ 
+                 <Link href={`/shop/productdetail/${product.id}`} onClick={handleClick} className='flex flex-row items-center justify-center inset-x-0 bg-[#E67E22] hover:bg-[#D35400] p-3 rounded-md text-black hover:text-[#fff] gap-1'><span className='text-base font-semibold font-poppins '>BUY NOW</span><TbShoppingCart className='text-xl font-bold'/></Link>
 
-             <div className='flex flex-row items-center gap-3 border border-[#E4E7E9] rounded-sm p-3'>
-                 <div className='w-[80px] h-[80px]'>
-                     <Image src={'/1.png'} alt='image' width={50} height={50} className='w-full h-full'/>
-                 </div>
-                  <div>
-                     <h1 className='text-sm font-normal mb-2'>Bose Sport Earbuds - Wireless Earphones - Bluetooth In Ear...</h1>
-                     <p className='text-sm font-semibold text-[#2DA5F3]'>$1,500</p>
-                  </div>
-             </div>
-             <div className='flex flex-row items-center gap-3 border border-[#E4E7E9] rounded-sm p-3'>
-                 <div className='w-[80px] h-[80px]'>
-                     <Image src={'/2.png'} alt='image' width={50} height={50} className='w-full h-full'/>
-                 </div>
-                  <div>
-                     <h1 className='text-sm font-normal mb-2'>Bose Sport Earbuds - Wireless Earphones - Bluetooth In Ear...</h1>
-                     <p className='text-sm font-semibold text-[#2DA5F3]'>$1,500</p>
-                  </div>
-             </div>
-             <div className='flex flex-row items-center gap-3 border border-[#E4E7E9] rounded-sm p-3'>
-                 <div className='w-[80px] h-[80px]'>
-                     <Image src={'/3.png'} alt='image' width={50} height={50} className='w-full h-full'/>
-                 </div>
-                  <div>
-                     <h1 className='text-sm font-normal mb-2'>Bose Sport Earbuds - Wireless Earphones - Bluetooth In Ear...</h1>
-                     <p className='text-sm font-semibold text-[#2DA5F3]'>$1,500</p>
-                  </div>
-             </div>
-           </div>
-           <div className=' space-y-4'>
-           <h1 className='text-base font-semibold mb-4'>FLASH SALE TODAY</h1>
+                </div>
 
-             <div className='flex flex-row items-center gap-3 border border-[#E4E7E9] rounded-sm p-3'>
-                 <div className='w-[80px] h-[80px]'>
-                     <Image src={'/4.png'} alt='image' width={50} height={50} className='w-full h-full'/>
-                 </div>
-                  <div>
-                     <h1 className='text-sm font-normal mb-2'>Bose Sport Earbuds - Wireless Earphones - Bluetooth In Ear...</h1>
-                     <p className='text-sm font-semibold text-[#2DA5F3]'>$1,500</p>
-                  </div>
              </div>
-             <div className='flex flex-row items-center gap-3 border border-[#E4E7E9] rounded-sm p-3'>
-                 <div className='w-[80px] h-[80px]'>
-                     <Image src={'/5.png'} alt='image' width={50} height={50} className='w-full h-full'/>
-                 </div>
-                  <div>
-                     <h1 className='text-sm font-normal mb-2'>Bose Sport Earbuds - Wireless Earphones - Bluetooth In Ear...</h1>
-                     <p className='text-sm font-semibold text-[#2DA5F3]'>$1,500</p>
-                  </div>
-             </div>
-             <div className='flex flex-row items-center gap-3 border border-[#E4E7E9] rounded-sm p-3'>
-                 <div className='w-[80px] h-[80px]'>
-                     <Image src={'/6.png'} alt='image' width={50} height={50} className='w-full h-full'/>
-                 </div>
-                  <div>
-                     <h1 className='text-sm font-normal mb-2'>Bose Sport Earbuds - Wireless Earphones - Bluetooth In Ear...</h1>
-                     <p className='text-sm font-semibold text-[#2DA5F3]'>$1,500</p>
-                  </div>
-             </div>
-           </div>
-           <div className=' space-y-4'>
-           <h1 className='text-base font-semibold mb-4'>FLASH SALE TODAY</h1>
-
-             <div className='flex flex-row items-center gap-3 border border-[#E4E7E9] rounded-sm p-3'>
-                 <div className='w-[80px] h-[80px]'>
-                     <Image src={'/7.png'} alt='image' width={50} height={50} className='w-full h-full'/>
-                 </div>
-                  <div>
-                     <h1 className='text-sm font-normal mb-2'>Bose Sport Earbuds - Wireless Earphones - Bluetooth In Ear...</h1>
-                     <p className='text-sm font-semibold text-[#2DA5F3]'>$1,500</p>
-                  </div>
-             </div>
-             <div className='flex flex-row items-center gap-3 border border-[#E4E7E9] rounded-sm p-3'>
-                 <div className='w-[80px] h-[80px]'>
-                     <Image src={'/8.png'} alt='image' width={50} height={50} className='w-full h-full'/>
-                 </div>
-                  <div>
-                     <h1 className='text-sm font-normal mb-2'>Bose Sport Earbuds - Wireless Earphones - Bluetooth In Ear...</h1>
-                     <p className='text-sm font-semibold text-[#2DA5F3]'>$1,500</p>
-                  </div>
-             </div>
-             <div className='flex flex-row items-center gap-3 border border-[#E4E7E9] rounded-sm p-3'>
-                 <div className='w-[80px] h-[80px]'>
-                     <Image src={'/9.png'} alt='image' width={50} height={50} className='w-full h-full'/>
-                 </div>
-                  <div>
-                     <h1 className='text-sm font-normal mb-2'>Bose Sport Earbuds - Wireless Earphones - Bluetooth In Ear...</h1>
-                     <p className='text-sm font-semibold text-[#2DA5F3]'>$1,500</p>
-                  </div>
-             </div>
-           </div>
-           <div className=' space-y-4'>
-           <h1 className='text-base font-semibold mb-4'>FLASH SALE TODAY</h1>
-
-             <div className='flex flex-row items-center gap-3 border border-[#E4E7E9] rounded-sm p-3'>
-                 <div className='w-[80px] h-[80px]'>
-                     <Image src={'/10.png'} alt='image' width={50} height={50} className='w-full h-full'/>
-                 </div>
-                  <div>
-                     <h1 className='text-sm font-normal mb-2'>Bose Sport Earbuds - Wireless Earphones - Bluetooth In Ear...</h1>
-                     <p className='text-sm font-semibold text-[#2DA5F3]'>$1,500</p>
-                  </div>
-             </div>
-             <div className='flex flex-row items-center gap-3 border border-[#E4E7E9] rounded-sm p-3'>
-                 <div className='w-[80px] h-[80px]'>
-                     <Image src={'/11.png'} alt='image' width={50} height={50} className='w-full h-full'/>
-                 </div>
-                  <div>
-                     <h1 className='text-sm font-normal mb-2'>Bose Sport Earbuds - Wireless Earphones - Bluetooth In Ear...</h1>
-                     <p className='text-sm font-semibold text-[#2DA5F3]'>$1,500</p>
-                  </div>
-             </div>
-             <div className='flex flex-row items-center gap-3 border border-[#E4E7E9] rounded-sm p-3'>
-                 <div className='w-[80px] h-[80px]'>
-                     <Image src={'/12.png'} alt='image' width={50} height={50} className='w-full h-full'/>
-                 </div>
-                  <div>
-                     <h1 className='text-sm font-normal mb-2'>Bose Sport Earbuds - Wireless Earphones - Bluetooth In Ear...</h1>
-                     <p className='text-sm font-semibold text-[#2DA5F3]'>$1,500</p>
-                  </div>
-             </div>
-           </div>
+            ))
+           }
+         <div>
+         <Link href={'/shop/product'} className='sm:hidden flex flex-row items-center justify-center gap-2 text-base font-bold border border-[#FA8232] hover:border-[#ff7134] text-[#FA8232] hover:text-[#ff7134] hover:bg-[#F5E1C8] rounded-full px-5 py-2 '><span>All Product</span><FaArrowRight /></Link>
+         </div>
+        </div>
+           
         </div>
       </div>
 
