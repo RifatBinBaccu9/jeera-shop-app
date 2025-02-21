@@ -6,7 +6,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import Image from "next/image";
-import { ConfigProvider, Menu, Rate, Tabs } from "antd";
+import { ConfigProvider, Menu, Rate, Tabs, Tooltip } from "antd";
 import { FaAward, FaBangladeshiTakaSign, FaHandshakeSimple, FaRegHeart, FaTencentWeibo, FaTwitter } from "react-icons/fa6";
 import { TfiReload } from "react-icons/tfi";
 import { BsCopy } from "react-icons/bs";
@@ -18,7 +18,7 @@ import { RiCustomerService2Fill } from "react-icons/ri";
 import { useParams } from "next/navigation";
 import {  useEffect, useState } from "react";
 import { FiHeart } from "react-icons/fi";
-import { FaRegEye } from "react-icons/fa";
+import { FaArrowRight, FaRegEye } from "react-icons/fa";
 
 export const product = [
   {
@@ -33,9 +33,16 @@ export const product = [
     "availability": "In Stock",
     "brand": "Apple",
     "category": "Fruits",
-    "description": "এক গ্লাস পানিতে দুই চামচ সিড মিক্স, একটু মধু ও একটু পিঙ্ক সল্ট মিশিয়ে সহজেই সরবত বানিয়ে খেতে পারেন।",
-    "image": "/jeera3.jfif",
-    "image2": "/jeera1.jfif"
+   "description": "এপ্রিকট একটি পুষ্টিকর ফল যা নানা স্বাস্থ্য উপকারে সহায়ক। এটি ভিটামিন A, C এবং ক্যালসিয়ামে সমৃদ্ধ, যা শরীরের ইমিউন সিস্টেম শক্তিশালী করতে সাহায্য করে। এপ্রিকট বিশেষ করে চোখের স্বাস্থ্যের জন্য উপকারী, কারণ এতে অ্যান্টি-অক্সিডেন্ট উপাদান থাকে যা চোখের প্রয়োজনীয় পুষ্টি সরবরাহ করে। এটি ডায়াবেটিস নিয়ন্ত্রণে সাহায্য করতে পারে এবং হজমের জন্যও খুবই ভালো। এপ্রিকট খেলে আপনার শরীরের প্রতিরোধ ক্ষমতা বাড়ে এবং ত্বক ও চুলের স্বাস্থ্য উন্নত হয়। এটি সরবত তৈরিতে বা স্ন্যাকস হিসেবে খাওয়া যেতে পারে, এবং এটি বিভিন্ন খাবারে এক বিশেষ স্বাদ যোগ করে।",  "image": "/Apricot1.jfif",
+    "image2": "/Apricot2.jfif",
+    "imageslide": [
+      {"id":11, "image":"/Apricot1.jfif"},
+      {"id":11, "image":"/Apricot2.jfif"},
+      {"id":11, "image":"/BlackCumin1.jfif"},
+      {"id":11, "image":"/BlackCumin2.jfif"},
+      {"id":11, "image":"/Coriander1.jfif"},
+      {"id":11, "image":"/Coriander2.jfif"},
+    ]
   },
   {
     "id": 2,
@@ -49,9 +56,18 @@ export const product = [
     "availability": "In Stock",
     "brand": "Organic Farms",
     "category": "Spices & Herbs",
-    "description": "বিশুদ্ধ কালোজিরা, যা স্বাস্থ্যের জন্য অত্যন্ত উপকারী।",
-    "image": "/jeera3.jfif",
-    "image2": "/jeera1.jfif"
+    "description": "কালোজিরা (Nigella sativa) একটি প্রাকৃতিক ঔষধি উদ্ভিদ, যা শারীরিক বিভিন্ন উপকারে সহায়ক। এটি মেটাবলিজম বৃদ্ধি করতে সাহায্য করে, শরীরের বিপাক ক্রিয়া উন্নত করে এবং হৃদরোগের ঝুঁকি কমায়। কালোজিরার মধ্যে প্রচুর অ্যান্টি-অক্সিডেন্ট থাকে, যা দেহের ক্ষতিকর টক্সিন দূর করতে সহায়ক। এটি রোগ প্রতিরোধ ক্ষমতা শক্তিশালী করতে এবং হজম প্রক্রিয়া উন্নত করতে সাহায্য করে। কালোজিরা ত্বকের সমস্যা দূর করতে সহায়ক, যেমন ব্রণ, ত্বকের আর্দ্রতা বজায় রাখা, এবং আরও অনেক। বিভিন্ন রান্নায় বা স্যালাডে ব্যবহার করা যেতে পারে, এমনকি সরবত বা গরম পানীয়তেও এটি ব্যবহৃত হয়।"
+    ,
+    "image": "/BlackCumin1.jfif",
+    "image2": "/BlackCumin2.jfif",
+    "imageslide": [
+      {"id":11, "image":"/Apricot1.jfif"},
+      {"id":11, "image":"/Apricot2.jfif"},
+      {"id":11, "image":"/BlackCumin1.jfif"},
+      {"id":11, "image":"/BlackCumin2.jfif"},
+      {"id":11, "image":"/Coriander1.jfif"},
+      {"id":11, "image":"/Coriander2.jfif"},
+    ]
   },
   {
     "id": 3,
@@ -65,9 +81,18 @@ export const product = [
     "availability": "In Stock",
     "brand": "Herbal Spice",
     "category": "Spices & Herbs",
-    "description": "তাজা ও সুগন্ধিযুক্ত ধনিয়া, যা খাবারের স্বাদ ও গন্ধ বাড়ায়।",
-    "image": "/jeera3.jfif",
-    "image2": "/jeera1.jfif"
+    "description": "ধনিয়া একটি জনপ্রিয় মশলা যা সাধারণত রান্নায় ব্যবহৃত হয়। এর পাতা এবং বীজ দুটি শারীরিক উপকারে আসে। ধনিয়া ভিটামিন C, K এবং ফাইবারে সমৃদ্ধ, যা হজম শক্তি বাড়াতে সাহায্য করে। এটি অ্যান্টি-অক্সিডেন্ট এবং অ্যান্টি-ইনফ্লামেটরি গুণসম্পন্ন, যা শরীরের প্রদাহ কমাতে সাহায্য করে। ধনিয়া কোলেস্টেরল নিয়ন্ত্রণে সহায়ক এবং রক্তচাপ কমাতে সাহায্য করে। এটি স্ন্যাকস বা স্যুপে মশলা হিসেবে ব্যবহৃত হয় এবং নানা রান্নায় একটি অতিরিক্ত টেস্ট যোগ করে। ধনিয়া খেলে দেহে পুষ্টির ঘাটতি পূর্ণ হয় এবং শরীরকে সতেজ রাখে।"
+    ,
+    "image": "/Coriander1.jfif",
+    "image2": "/Coriander2.jfif",
+    "imageslide": [
+      {"id":11, "image":"/Apricot1.jfif"},
+      {"id":11, "image":"/Apricot2.jfif"},
+      {"id":11, "image":"/BlackCumin1.jfif"},
+      {"id":11, "image":"/BlackCumin2.jfif"},
+      {"id":11, "image":"/Coriander1.jfif"},
+      {"id":11, "image":"/Coriander2.jfif"},
+    ]
   },
   {
     "id": 4,
@@ -81,9 +106,18 @@ export const product = [
     "availability": "In Stock",
     "brand": "Organic Spice",
     "category": "Spices & Herbs",
-    "description": "খাঁটি মেথি, যা হজমের জন্য উপকারী।",
-    "image": "/jeera3.jfif",
-    "image2": "/jeera1.jfif"
+    "description": "মেথি (Trigonella foenum-graecum) এক প্রাকৃতিক উপাদান যা বিভিন্ন স্বাস্থ্য উপকারে সহায়ক। এটি হজমে সহায়ক এবং রক্তে শর্করা নিয়ন্ত্রণে সাহায্য করে, বিশেষ করে ডায়াবেটিস রোগীদের জন্য উপকারী। মেথি দেহের তাপমাত্রা স্বাভাবিক রাখতে সাহায্য করে, কোলেস্টেরল কমাতে সহায়ক এবং হার্টের স্বাস্থ্য ভালো রাখে। মেথি হজম শক্তি উন্নত করে এবং ওজন কমাতে সাহায্য করতে পারে। এটি চা, স্যুপ, সালাদ বা অন্যান্য খাবারে মশলা হিসেবে ব্যবহার করা যেতে পারে। মেথির মধ্যে থাকা ফাইবার ও প্রোটিন শরীরের জন্য উপকারী এবং এটি পেটের সমস্যা দূর করতে সহায়ক।"
+  ,
+    "image": "/Fenugreek1.jfif",
+    "image2": "/Fenugreek2.jfif",
+    "imageslide": [
+      {"id":11, "image":"/Apricot1.jfif"},
+      {"id":11, "image":"/Apricot2.jfif"},
+      {"id":11, "image":"/BlackCumin1.jfif"},
+      {"id":11, "image":"/BlackCumin2.jfif"},
+      {"id":11, "image":"/Coriander1.jfif"},
+      {"id":11, "image":"/Coriander2.jfif"},
+    ]
   },
   {
     "id": 5,
@@ -97,9 +131,18 @@ export const product = [
     "availability": "In Stock",
     "brand": "Pure Spices",
     "category": "Spices & Herbs",
-    "description": "উচ্চমানের গোল মরিচ, যা মশলা হিসেবে ব্যবহৃত হয়।",
-    "image": "/jeera.jfif",
-    "image2": "/jeera2.jfif"
+    "description": "গোল মরিচ (Piper nigrum) বিশ্বের সবচেয়ে জনপ্রিয় মশলা। এটি হজম শক্তি বাড়াতে সহায়ক এবং শরীরের তাপমাত্রা নিয়ন্ত্রণে সাহায্য করে। গোল মরিচের মধ্যে প্রচুর ভিটামিন C, ভিটামিন A, এবং অ্যান্টি-অক্সিডেন্ট উপাদান রয়েছে, যা রোগ প্রতিরোধ ক্ষমতা উন্নত করতে সহায়ক। এটি শ্বাসতন্ত্রের সমস্যা কমাতে সাহায্য করে এবং ত্বকের সমস্যা দূর করতে সহায়ক। গোল মরিচ হৃদরোগ এবং স্ট্রোকের ঝুঁকি কমাতে সহায়ক এবং ডায়াবেটিস নিয়ন্ত্রণে সাহায্য করে। এটি রান্নায় বিভিন্ন ধরনের মাংস, স্যুপ, স্যালাদ, বা অন্যান্য মশলাদার খাবারে ব্যবহৃত হয়।"
+    ,
+    "image": "/BlackPepper1.jfif",
+    "image2": "/BlackPepper2.jfif",
+    "imageslide": [
+      {"id":11, "image":"/Apricot1.jfif"},
+      {"id":11, "image":"/Apricot2.jfif"},
+      {"id":11, "image":"/BlackCumin1.jfif"},
+      {"id":11, "image":"/BlackCumin2.jfif"},
+      {"id":11, "image":"/Coriander1.jfif"},
+      {"id":11, "image":"/Coriander2.jfif"},
+    ]
   },
   {
     "id": 6,
@@ -113,9 +156,18 @@ export const product = [
     "availability": "In Stock",
     "brand": "Premium Spices",
     "category": "Spices & Herbs",
-    "description": "সুগন্ধি এলাচ, যা রান্নায় অতুলনীয় স্বাদ যোগ করে।",
-    "image": "/jeera.jfif",
-    "image2": "/jeera2.jfif"
+    "description": "এলাচ (Elettaria cardamomum) একটি সুগন্ধি মশলা যা রান্নায় অতুলনীয় স্বাদ যোগ করে। এটি শরীরের জন্য অনেক উপকারী, যেমন হজম শক্তি বাড়ানো, শ্বাসকষ্ট দূর করা, এবং রক্তচাপ নিয়ন্ত্রণে রাখা। এলাচের মধ্যে অ্যান্টি-অক্সিডেন্ট গুণ থাকে যা ত্বককে সতেজ ও সুন্দর রাখে এবং শরীরের বিভিন্ন প্রদাহ কমাতে সহায়ক। এলাচ রক্তে শর্করা নিয়ন্ত্রণে সহায়ক এবং খাবারের হজম প্রক্রিয়া উন্নত করে। এলাচ চা, মিষ্টান্ন, মাংস বা অন্যান্য রান্নায় ব্যবহার করা যেতে পারে, যা খাবারের স্বাদ একে অপরকে সম্পূরকভাবে বৃদ্ধি করে।"
+ ,
+    "image": "/Cardamom1.jfif",
+    "image2": "/Cardamom2.jfif",
+    "imageslide": [
+      {"id":11, "image":"/Apricot1.jfif"},
+      {"id":11, "image":"/Apricot2.jfif"},
+      {"id":11, "image":"/BlackCumin1.jfif"},
+      {"id":11, "image":"/BlackCumin2.jfif"},
+      {"id":11, "image":"/Coriander1.jfif"},
+      {"id":11, "image":"/Coriander2.jfif"},
+    ]
   },
   {
     "id": 7,
@@ -129,9 +181,18 @@ export const product = [
     "availability": "In Stock",
     "brand": "Herbal Essence",
     "category": "Spices & Herbs",
-    "description": "খাঁটি লবঙ্গ, যা রান্না ও স্বাস্থ্য উপকারিতার জন্য বিখ্যাত।",
-    "image": "/jeera.jfif",
-    "image2": "/jeera2.jfif"
+    "description": "লবঙ্গ (Syzygium aromaticum) একটি প্রাকৃতিক মশলা যা শরীরের বিভিন্ন উপকারে সহায়ক। এটি একটি শক্তিশালী অ্যান্টি-অক্সিডেন্ট হিসেবে কাজ করে, যা শরীরের টক্সিন দূর করতে এবং রোগ প্রতিরোধ ক্ষমতা উন্নত করতে সাহায্য করে। লবঙ্গ মুখের রোগ নিরাময়ে সহায়ক এবং হজম শক্তি বাড়াতে সাহায্য করে। এটি ত্বককে মসৃণ রাখে এবং ব্রণের সমস্যা দূর করতে সহায়ক। লবঙ্গের মধ্যে রয়েছে অ্যান্টি-ব্যাকটেরিয়াল এবং অ্যান্টি-ইনফ্লামেটরি গুণ, যা শারীরিক প্রদাহ কমাতে সহায়ক। রান্নায় লবঙ্গের ব্যবহার খাবারের স্বাদ এবং গন্ধ বাড়ায়, এটি বিভিন্ন প্রকারের মিষ্টান্ন বা স্যুপেও ব্যবহার করা হয়।"
+  ,
+    "image": "/Cloves1.jfif",
+    "image2": "/Cloves2.jfif",
+    "imageslide": [
+      {"id":11, "image":"/Apricot1.jfif"},
+      {"id":11, "image":"/Apricot2.jfif"},
+      {"id":11, "image":"/BlackCumin1.jfif"},
+      {"id":11, "image":"/BlackCumin2.jfif"},
+      {"id":11, "image":"/Coriander1.jfif"},
+      {"id":11, "image":"/Coriander2.jfif"},
+    ]
   },
   {
     "id": 8,
@@ -145,9 +206,18 @@ export const product = [
     "availability": "In Stock",
     "brand": "Organic Spice",
     "category": "Spices & Herbs",
-    "description": "সুগন্ধি দারুচিনি, যা রান্নায় ব্যবহৃত হয়।",
-    "image": "/jeera.jfif",
-    "image2": "/jeera2.jfif"
+    "description": "দারুচিনি (Cinnamomum verum) একটি সুগন্ধি মশলা যা শরীরের জন্য অনেক উপকারী। এটি হজম শক্তি উন্নত করে, রক্তচাপ কমাতে সাহায্য করে এবং অ্যান্টি-অক্সিডেন্ট গুণে সমৃদ্ধ। দারুচিনি শরীরের বিপাকক্রিয়া ত্বরান্বিত করে, যার ফলে ওজন কমানোর প্রক্রিয়া সহজ হয়। এটি গ্যাস্ট্রিক সমস্যা, মাইক্রোবিয়াল ইনফেকশন এবং শ্বাসতন্ত্রের সমস্যা দূর করতে সহায়ক। দারুচিনি চা, মিষ্টান্ন বা স্যুপে ব্যবহার করা যেতে পারে এবং এতে বিশেষ ধরনের গন্ধ ও স্বাদ যুক্ত করে।"
+    ,
+    "image": "/Cinnamon1.jfif",
+    "image2": "/Cinnamon2.jfif",
+    "imageslide": [
+      {"id":11, "image":"/Apricot1.jfif"},
+      {"id":11, "image":"/Apricot2.jfif"},
+      {"id":11, "image":"/BlackCumin1.jfif"},
+      {"id":11, "image":"/BlackCumin2.jfif"},
+      {"id":11, "image":"/Coriander1.jfif"},
+      {"id":11, "image":"/Coriander2.jfif"},
+    ]
   },
   {
     "id": 9,
@@ -161,9 +231,18 @@ export const product = [
     "availability": "In Stock",
     "brand": "Natural Honey",
     "category": "Organic Products",
-    "description": "খাঁটি মধু, যা স্বাস্থ্যের জন্য উপকারী।",
+    "description": "মধু একটি প্রাকৃতিক এবং শক্তিশালী পুষ্টি উপাদান যা শরীরের জন্য অত্যন্ত উপকারী। এতে থাকা অ্যান্টি-অক্সিডেন্ট গুণ শরীরের টক্সিন দূর করতে সাহায্য করে, রোগ প্রতিরোধ ক্ষমতা বাড়ায় এবং শরীরকে সতেজ রাখে। মধু হজম শক্তি বাড়াতে সহায়ক এবং ত্বকের স্বাস্থ্য উন্নত করে। এটি প্রাকৃতিক শক্তির উৎস হিসেবে কাজ করে, বিশেষ করে শীতকালে এটি শরীরকে উষ্ণ রাখে। মধু গলার ব্যথা, কাশি এবং ঠান্ডার সমস্যারও কার্যকরী চিকিৎসা হিসেবে কাজ করে। এটি স্ন্যাকস, স্যালাড ড্রেসিং, ডেজার্ট বা সরবত তৈরির জন্য ব্যবহার করা যেতে পারে।"
+  ,
     "image": "/honey.jfif",
-    "image2": "/honey2.jfif"
+    "image2": "/honey2.jfif",
+    "imageslide": [
+      {"id":11, "image":"/Apricot1.jfif"},
+      {"id":11, "image":"/Apricot2.jfif"},
+      {"id":11, "image":"/BlackCumin1.jfif"},
+      {"id":11, "image":"/BlackCumin2.jfif"},
+      {"id":11, "image":"/Coriander1.jfif"},
+      {"id":11, "image":"/Coriander2.jfif"},
+    ]
   },
   {
     "id": 10,
@@ -177,9 +256,18 @@ export const product = [
     "availability": "In Stock",
     "brand": "Fresh Bites",
     "category": "Snacks",
-    "description": "স্বাস্থ্যকর ও মজাদার বিস্কুট।",
+    "description": "বিস্কুট (Biscuits) একটি জনপ্রিয় স্ন্যাকস যা প্রাতঃরাশ বা চা সময়ে খাওয়ার জন্য আদর্শ। এটি সুস্বাদু এবং স্বাস্থ্যকর, এবং এতে প্রয়োজনীয় প্রোটিন, ফাইবার এবং ক্যালসিয়াম থাকে। বিস্কুট বিভিন্ন প্রকারের মিষ্টি এবং স্যাল্টেড ফ্লেভারে পাওয়া যায় এবং এটি বাচ্চাদের এবং বয়স্কদের জন্য একটি পুষ্টিকর স্ন্যাক হিসেবে ব্যবহৃত হয়। বিস্কুট শরীরকে শক্তি প্রদান করে এবং দ্রুত খাবারের পছন্দের বিকল্প হতে পারে। এটি অফিসে, স্কুলে বা যেকোনো স্থানে সহজে বহনযোগ্য এবং খাওয়ার জন্য উপযুক্ত।"
+ ,
     "image": "/biscuits.jfif",
-    "image2": "/biscuits2.jfif"
+    "image2": "/biscuits2.jfif",
+    "imageslide": [
+      {"id":11, "image":"/Apricot1.jfif"},
+      {"id":11, "image":"/Apricot2.jfif"},
+      {"id":11, "image":"/BlackCumin1.jfif"},
+      {"id":11, "image":"/BlackCumin2.jfif"},
+      {"id":11, "image":"/Coriander1.jfif"},
+      {"id":11, "image":"/Coriander2.jfif"},
+    ]
   },
   {
     "id": 11,
@@ -193,9 +281,18 @@ export const product = [
     "availability": "In Stock",
     "brand": "Nutri Nuts",
     "category": "Dry Fruits",
-    "description": "সুস্বাদু ও স্বাস্থ্যকর বাদাম।",
+    "description": "বাদাম (Almonds) একটি সুস্বাদু এবং পুষ্টিকর শুকনো ফল যা প্রোটিন, ভিটামিন, খনিজ এবং অ্যান্টি-অক্সিডেন্টে পূর্ণ। এটি হৃদরোগের ঝুঁকি কমাতে সাহায্য করে এবং ত্বকের স্বাস্থ্য উন্নত করে। বাদাম মস্তিষ্কের কর্মক্ষমতা বাড়াতে সহায়ক এবং স্মৃতিশক্তি বাড়াতে সাহায্য করে। এতে থাকা ভিটামিন E ত্বকের জন্য উপকারী, যা ত্বককে মসৃণ ও তরুণ রাখতে সহায়ক। বাদাম রক্তে শর্করার মাত্রা নিয়ন্ত্রণে রাখে এবং ডায়াবেটিস রোগীদের জন্য উপকারী। বাদাম হজম শক্তি বাড়ায় এবং শরীরের অপ্রয়োজনীয় টক্সিন দূর করতে সহায়ক। বাদামের মধ্যে থাকা ফ্যাটি অ্যাসিড হৃদযন্ত্রের জন্য উপকারী এবং শরীরের শুষ্কতা কমাতে সাহায্য করে। বাদাম চা, স্যালাড, মিষ্টান্ন বা অন্য যেকোনো খাবারে ব্যবহার করা যেতে পারে, এবং এটি স্ন্যাকস হিসেবেও খাওয়া যেতে পারে।"
+    ,
     "image": "/almonds.jfif",
-    "image2": "/almonds2.jfif"
+    "image2": "/almonds2.jfif",
+    "imageslide": [
+      {"id":11, "image":"/Apricot1.jfif"},
+      {"id":11, "image":"/Apricot2.jfif"},
+      {"id":11, "image":"/BlackCumin1.jfif"},
+      {"id":11, "image":"/BlackCumin2.jfif"},
+      {"id":11, "image":"/Coriander1.jfif"},
+      {"id":11, "image":"/Coriander2.jfif"},
+    ]
   },
   {
     "id": 12,
@@ -209,20 +306,20 @@ export const product = [
     "availability": "In Stock",
     "brand": "Nutri Nuts",
     "category": "Dry Fruits",
-    "description": "পেস্তা বাদাম, যা স্বাস্থ্য উপকারী ও পুষ্টিকর।",
+   "description": "পেস্তা বাদাম (Pistachio) একটি সুস্বাদু এবং পুষ্টিকর শুকনো ফল যা বিভিন্ন স্বাস্থ্য উপকারে সহায়ক। এটি প্রোটিন, ফাইবার, ভিটামিন E এবং ক্যালসিয়ামে সমৃদ্ধ, যা শরীরের জন্য অত্যন্ত উপকারী। পেস্তা বাদাম হৃদরোগের ঝুঁকি কমাতে সাহায্য করে এবং ডায়াবেটিস নিয়ন্ত্রণে সহায়ক। এর মধ্যে থাকা অ্যান্টি-অক্সিডেন্ট গুণ দেহের টক্সিন দূর করতে সহায়ক এবং রোগ প্রতিরোধ ক্ষমতা বাড়ায়। পেস্তা বাদাম শরীরের বিপাকক্রিয়া ত্বরান্বিত করে এবং শরীরের অতিরিক্ত চর্বি কমাতে সাহায্য করে। এটি হজম প্রক্রিয়া উন্নত করে এবং ত্বকের স্বাস্থ্য উন্নত করতে সহায়ক। পেস্তা বাদাম চা, স্যালাড, মিষ্টান্ন বা অন্যান্য খাবারে ব্যবহার করা যেতে পারে, এবং এটি স্ন্যাকস হিসেবেও খাওয়া যেতে পারে। এছাড়াও, পেস্তা বাদামের মধ্যে থাকা ফ্যাটি অ্যাসিড এবং অ্যান্টি-ইনফ্লামেটরি গুণ হৃদযন্ত্রের স্বাস্থ্য রক্ষা করতে সাহায্য করে।"
+,
     "image": "/pistachios.jfif",
-    "image2": "/pistachios2.jfif"
+    "image2": "/pistachios2.jfif",
+    "imageslide": [
+      {"id":11, "image":"/Apricot1.jfif"},
+      {"id":11, "image":"/Apricot2.jfif"},
+      {"id":11, "image":"/BlackCumin1.jfif"},
+      {"id":11, "image":"/BlackCumin2.jfif"},
+      {"id":11, "image":"/Coriander1.jfif"},
+      {"id":11, "image":"/Coriander2.jfif"},
+    ]
   }
 ]
-
-const categories = [
-    {id : 1, image: "/jeera.jfif"},
-    {id : 2, image: "/jeera.jfif"},
-    {id : 3, image: "/jeera.jfif"},
-    {id : 4, image: "/jeera.jfif"},
-    {id : 5, image: "/jeera.jfif"},
-    {id : 6, image: "/jeera.jfif"},
-  ];
 
 
 const Productdetails = () => {
@@ -232,7 +329,7 @@ const Productdetails = () => {
    console.log(products);
    
 
-    const [selectedImage, setSelectedImage]= useState("/jeera.jfif");
+    const [selectedImage, setSelectedImage]= useState(products.image);
 
     const productfilter = product.filter(product => product.id !== id);
 
@@ -267,6 +364,22 @@ const Productdetails = () => {
       setUpdatePrice((prevPrice) => (prevPrice - (products?.price ?? 0) > 0 ? prevPrice - (products?.price ?? 0) : prevPrice));
       setProductCount((prevCount) => (prevCount > 1 ? prevCount - 1 : prevCount));
     };
+    const [priceData, setPriceData] = useState(null);
+
+  const handleClick = () => {
+    if (priceData) {
+      localStorage.removeItem("updatePrice");
+    }
+    if (productCount) {
+      localStorage.removeItem("productCount");
+    }
+  };
+
+  useEffect(() => {
+    if ( window !== "undefined") {
+      setPriceData(localStorage.getItem("updatePrice"));
+    }
+  }, []);
   return (
     <div>
     <div className=' bg-[#f4ebd9] py-[26px]'>
@@ -276,7 +389,7 @@ const Productdetails = () => {
         <span>Home</span>
         </Link>
         <MdKeyboardArrowRight />
-        <Link href={'/'} className='flex flex-row items-center gap-2'>
+        <Link href={'/shop/product'} className='flex flex-row items-center gap-2'>
         <span>Shop</span>
         </Link>
         <MdKeyboardArrowRight />
@@ -284,8 +397,9 @@ const Productdetails = () => {
         </div> 
         </div> 
 
-        <div className=" grid grid-cols-2 gap-[60px] container my-[60px]">
-         <div className="  mb-10 lg:mb-0 ">
+        <div className="  container my-[60px]">
+        <div className=" grid grid-cols-1 lg:grid-cols-2 gap-10">
+        <div className="mb-10 lg:mb-0 ">
             <div className="border border-[#E67E22] p-6 rounded-lg">
             <Image src={selectedImage} alt='laptop' width={800} height={800} className="w-full h-[200px] sm:h-[450px] "/>
             </div>
@@ -307,16 +421,17 @@ const Productdetails = () => {
       1280: { slidesPerView: 5, spaceBetween: 10 },
     }}
   >
-    {categories.map((category, index) => (
+    {products.imageslide.map((category, index) => (
       <SwiperSlide key={index} className="!lg:w-[96px] !lg:h-[96px]">
         <div className="flex flex-col items-center gap-2 cursor-pointer" onClick={() => setSelectedImage(category.image)}>
           <div className="w-full h-full rounded-md border border-[#E67E22] p-2">
             <Image
-              src={category.image}
+              src={category.image || null}
               width={900}
               height={900}
               alt={'image'}
-              className="w-full h-full"
+              
+              className="w-full h-[100px] lg:object-cover"
             />
           </div>
         </div>
@@ -328,16 +443,16 @@ const Productdetails = () => {
   {/* Custom Navigation Buttons */}
   <div className="">
     {/* Previous Button */}
-    <button className="z-50 hidden sm:flex absolute top-1/2 transform -translate-y-1/2  left-0 custom-prev items-center justify-center w-10 h-10 bg-[#E67E22] text-white rounded-full shadow-lg hover:bg-[#d35400] transition-all duration-300">
+    <button className="z-50 flex absolute top-1/2 transform -translate-y-1/2  left-0 custom-prev items-center justify-center w-10 h-10 bg-[#E67E22] text-white rounded-full shadow-lg hover:bg-[#d35400] transition-all duration-300">
       <IoIosArrowRoundBack className="text-4xl" />
     </button>
 
     {/* Next Button */}
-    <button className="z-50  hidden sm:flex absolute top-1/2  transform -translate-y-1/2  right-0 custom-next items-center justify-center w-10 h-10 bg-[#E67E22] text-white rounded-full shadow-lg hover:bg-[#d35400] transition-all duration-300">
+    <button className="z-50 flex absolute top-1/2  transform -translate-y-1/2  right-0 custom-next items-center justify-center w-10 h-10 bg-[#E67E22] text-white rounded-full shadow-lg hover:bg-[#d35400] transition-all duration-300">
       <IoIosArrowRoundForward className="text-4xl" />
     </button>
   </div>
-</section>
+            </section>
 
          </div>
 
@@ -414,13 +529,14 @@ const Productdetails = () => {
            <div className="p-5  border border-[#E67E22] rounded-sm">
             <h1 className="text-sm font-normal mb-3">100% Guarantee Safe Checkout</h1>
             <div className="flex flex-row items-center justify-between">
-            <Image src={'/cashon-removebg-preview.png'} alt="image" width={100} height={100} />
-            <Image src={'/bkash-removebg-preview.png'} alt="image" width={100} height={100} />
-            <Image src={'/nagad-removebg-preview.png'} alt="image" width={100} height={100} />
-            <Image src={'/rokat-removebg-preview.png'} alt="image" width={100} height={100} />
+            <Image src={'/cashon-removebg-preview.png'} alt="image" width={100} height={100} className="w-[50px] sm:w-[100px] h-full"/>
+            <Image src={'/bkash-removebg-preview.png'} alt="image" width={100} height={100} className="w-[50px] sm:w-[100px] h-full"/>
+            <Image src={'/nagad-removebg-preview.png'} alt="image" width={100} height={100} className="w-[50px] sm:w-[100px] h-full"/>
+            <Image src={'/rokat-removebg-preview.png'} alt="image" width={100} height={100} className="w-[50px] sm:w-[100px] h-full"/>
             </div>
            </div>
          </div>
+        </div>
         </div>
 
         <div className="container py-[100px]">
@@ -451,35 +567,31 @@ const Productdetails = () => {
                         <div className="col-span-2">
                           <h3 className="text-xl font-semibold text-orange-600 mb-4">Description</h3>
                           <p className="text-gray-700 leading-relaxed">
-                            The most powerful MacBook Pro ever is here. With the blazing-fast M1 Pro or M1 Max chip — the first Apple silicon designed for pros — you get groundbreaking performance and amazing battery life.
-                          </p>
-                          <p className="text-gray-700 mt-4">
-                            Even the most ambitious projects are easily handled with up to 10 CPU cores, up to 16 GPU cores, and a 16-core Neural Engine.
+                            {products.description}
                           </p>
                         </div>
 
-                        {/* Features Section */}
                         <div className="col-span-1">
-                          <h3 className="text-xl font-semibold text-orange-600 mb-4">Features</h3>
-                          <ul className="space-y-3 text-gray-700">
-                            <li className="flex items-center gap-2"><FaAward className="text-orange-600" /> Free 1 Year Warranty</li>
-                            <li className="flex items-center gap-2"><TbTruckDelivery className="text-orange-600" /> Free & Fast Delivery</li>
-                            <li className="flex items-center gap-2"><FaHandshakeSimple className="text-orange-600" /> Money-back Guarantee</li>
-                            <li className="flex items-center gap-2"><RiCustomerService2Fill className="text-orange-600" /> 24/7 Support</li>
-                            <li className="flex items-center gap-2"><MdPayment className="text-orange-600" /> Secure Payment</li>
-                          </ul>
-                        </div>
+  <h3 className="text-xl font-semibold text-orange-600 mb-4">Features</h3>
+  <ul className="space-y-3 text-gray-700">
+    <li className="flex items-center gap-2"><TbTruckDelivery className="text-orange-600" /> ফ্রি ও দ্রুত ডেলিভারি</li>
+    <li className="flex items-center gap-2"><FaHandshakeSimple className="text-orange-600" /> টাকা ফেরত গ্যারান্টি</li>
+    <li className="flex items-center gap-2"><RiCustomerService2Fill className="text-orange-600" /> ২৪/৭ সাপোর্ট</li>
+    <li className="flex items-center gap-2"><MdPayment className="text-orange-600" /> নিরাপদ পেমেন্ট</li>
+  </ul>
+</div>
 
-                        {/* Shipping Information Section */}
-                        <div className="col-span-1">
-                          <h3 className="text-xl font-semibold text-orange-600 mb-4">Shipping Information</h3>
-                          <ul className="space-y-3 text-gray-700">
-                            <li>Courier: 2-4 days, free shipping</li>
-                            <li>Local Shipping: up to one week, $19.00</li>
-                            <li>UPS Ground Shipping: 4-6 days, $29.00</li>
-                            <li>Global Export: 3-4 days, $39.00</li>
-                          </ul>
-                        </div>
+{/* শিপিং তথ্য সেকশন */}
+<div className="col-span-1">
+  <h3 className="text-xl font-semibold text-orange-600 mb-4">Shipping Information</h3>
+  <ul className="space-y-3 text-gray-700">
+    <li>কুরিয়ার: ২-৪ দিন, ফ্রি শিপিং</li>
+    <li>লোকাল শিপিং: এক সপ্তাহ পর্যন্ত, $১৯.০০</li>
+    <li>UPS গ্রাউন্ড শিপিং: ৪-৬ দিন, $২৯.০০</li>
+    <li>গ্লোবাল এক্সপোর্ট: ৩-৪ দিন, $৩৯.০০</li>
+  </ul>
+</div>
+
                       </div>
                     </div>
                   ),
@@ -506,37 +618,41 @@ const Productdetails = () => {
                 <div className='container my-[72px]'>
                    
                    <h1 className='text-2xl font-semibold mb-4'>Related Products</h1>
-                   <div className='grid grid-cols-4 gap-6 mt-8'>
+                   <div className='grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-10'>
            {
-            productfilter.slice(0,4).map((product) => (
+            productfilter.slice(0, 4).map((product) => (
                 <div key={product.id} className='border border-[#E67E22] bg-[#F5E1C8] rounded-lg p-5 relative '>
                 <div className='group'>
-                <Link href={`/productdetail/${product.id}`}>
+                <Link href={`/shop/productdetail/${product.id}`} onClick={handleClick} >
                 <Image src={product.image} alt='jeera' width={100} height={100} className='w-full h-[300px]'/>
                 </Link>
                 <div className='hidden group-hover:block transition-all delay-700 duration-1000 absolute top-0 right-0 inset-x-0 p-5 z-10'>
-                <Link href={`/productdetail/${product.id}`}>
+                <Link href={`/shop/productdetail/${product.id}`} onClick={handleClick} >
                 <Image src={product.image2} alt='jeera' width={100} height={100} className='w-full h-[300px]'/>
                 </Link>
                 </div>
                 <div className=' z-50 group-hover:flex flex-col gap-2 hidden  transition-all delay-700 duration-1000 absolute top-5 right-5  p-6 '>
                 <div className='bg-white text-black p-2 rounded-full cursor-pointer hover:bg-[#E67E22] hover:text-[#fff]'><TfiReload className='text-xl '/></div>
                 <div className='bg-white text-black p-2 rounded-full cursor-pointer hover:bg-[#E67E22] hover:text-[#fff]'><FiHeart className='text-xl '/></div>
-                <div className='bg-white text-black p-2 rounded-full cursor-pointer hover:bg-[#E67E22] hover:text-[#fff]'> <FaRegEye className='text-xl '/></div>
+                <Link href={`/shop/productdetail/${product.id}`} className='bg-white text-black p-2 rounded-full cursor-pointer hover:bg-[#E67E22] hover:text-[#fff]'> <FaRegEye className='text-xl '/></Link>
                 </div>
                 </div>
                 <div className='mt-6'>
-                 <Link href={`/productdetail/${product.id}`} className='text-xl font-semibold font-poppins text-[#222222] hover:text-[#D35400]'>{product.name}</Link>
+                <Tooltip title={product.name}>
+                 <Link href={`/shop/productdetail/${product.id}`} onClick={handleClick}  className='text-xl font-semibold font-poppins text-[#222222] hover:text-[#D35400] line-clamp-1'>{product.name}</Link>
+                 </Tooltip>
                  <p className='text-lg font-bold text-[#E67E22] flex flex-row items-center gap-1 my-3'><span>{product.price}</span><FaBangladeshiTakaSign className='text-base'/></p>
  
-                 <Link href={`/productdetail/${product.id}`} className='flex flex-row items-center justify-center inset-x-0 bg-[#E67E22] hover:bg-[#D35400] p-3 rounded-md text-black hover:text-[#fff] gap-1'><span className='text-base font-semibold font-poppins '>BUY NOW</span><TbShoppingCart className='text-xl font-bold'/></Link>
+                 <Link href={`/shop/productdetail/${product.id}`} onClick={handleClick} className='flex flex-row items-center justify-center inset-x-0 bg-[#E67E22] hover:bg-[#D35400] p-3 rounded-md text-black hover:text-[#fff] gap-1'><span className='text-base font-semibold font-poppins '>BUY NOW</span><TbShoppingCart className='text-xl font-bold'/></Link>
 
                 </div>
 
              </div>
             ))
            }
-          
+         <div>
+         <Link href={'/shop/product'} className='sm:hidden flex flex-row items-center justify-center gap-2 text-base font-bold border border-[#FA8232] hover:border-[#ff7134] text-[#FA8232] hover:text-[#ff7134] hover:bg-[#F5E1C8] rounded-full px-5 py-2 '><span>All Product</span><FaArrowRight /></Link>
+         </div>
         </div>
                    
                 </div>

@@ -25,41 +25,32 @@ export default function ContactPage() {
 
   return (
     <section className=" ">
-       <div className=' bg-[#f4ebd9] py-[26px]'>
-         <div className='container flex sm:flex-row flex-wrap items-center gap-2 text-sm font-normal '>
-        <Link href={'/'} className='flex flex-row items-center gap-2'>
-        <IoHomeOutline />
-        <span>Home</span>
-        </Link>
-        <MdKeyboardArrowRight />
-        <span className='text-[#E67E22]'>Contact Us</span> 
-        </div>
-        </div>
-      <div className="container py-12">
+     
+      <div className="container py-16">
         <div className="grid md:grid-cols-3 justify-between gap-8 mb-16">
           <div>
              
              <h1 className=' text-lg font-normal font-poppins'>Address</h1>
-             <hr className=' border border-[#fff] my-2'/>
+             <hr className=' border  my-2'/>
              <p className='text-base font-normal font-poppins'>1215 Lorem Ipsum, Ch 176080', 'Chandigarh, INDIA</p>
           </div>
           <div>
           
              <h1 className=' text-lg font-normal font-poppins'>E-mail</h1>
-             <hr className=' border border-[#fff] my-2'/>
+             <hr className=' border  my-2'/>
              <p className='text-base font-normal font-poppins'>info@LoremIpsum.com</p>
           </div>
           <div>
           
              <h1 className=' text-lg font-normal font-poppins'>Customer Support</h1>
-             <hr className=' border border-[#fff] my-2'/>
+             <hr className=' border  my-2'/>
              <p className='text-base font-normal font-poppins'>Mon - Thu 9:00 am - 4:00 pm </p>
              <p className='text-base font-normal font-poppins'>Thu - Mon 10:00 pm - 5:00 pm </p>
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          <form onSubmit={handleSubmit} className="bg-white p-6 shadow-md rounded-lg">
+        <div className="grid lg:grid-cols-2 gap-8">
+          <form onSubmit={handleSubmit} className="border border-[#E67E22] p-6 shadow-md rounded-lg">
             <h1 className="text-base font-medium text-gray-500 mb-4">INFORMATION ABOUT US</h1>
             <h2 className="text-2xl font-bold text-gray-800 mb-6">CONTACT US FOR ANY QUESTIONS</h2>
             <div className=" flex flex-col gap-4">
@@ -94,6 +85,7 @@ export default function ContactPage() {
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7354.852067250491!2d89.54001149999999!3d22.82372230000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1739782431023!5m2!1sen!2sbd"
               width="100%"
+              height="100%"
               className="rounded-lg shadow-md h-full"
               allowFullScreen
               loading="lazy"

@@ -60,10 +60,10 @@ const Footer = () => {
         <p className="py-5 font-normal">Enter your email below to be the first to know
         about new collections and product launches.</p>
        <form onSubmit={handelChange}>
-       <label htmlFor="emailSub" className="border border-[#5A3E36] bg-[#FAF3E0]  flex items-center select-none py-3 px-4 rounded-lg">
+       <label htmlFor="emailSub" className="border border-[#E67E22] bg-[#FAF3E0]  flex items-center select-none py-3 px-4 rounded-lg">
         <HiOutlineMail className="w-6 h-6 cursor-pointer"/>
-        <input type="email" onChange={(e)=>setEmailSub(e.target.value)} id="emailSub" placeholder="Your email" className="text-base font-jost font-normal outline-none bg-[#FAF3E0]  border-none w-full  px-[12px]"/>
-        <button type="submit"><FaArrowRightLong className="w-5 h-5 cursor-pointer"/></button>
+        <input type="email" onChange={(e)=>setEmailSub(e.target.value)} id="emailSub" placeholder="Your email" className="text-base font-jost font-normal outline-none bg-[#FAF3E0]   border-none w-full  px-[12px]"/>
+        <button type="submit"><FaArrowRightLong className="w-5 h-5 cursor-pointer hover:text-[#E67E22]"/></button>
         </label>
        </form>
        </div>
@@ -84,9 +84,9 @@ const Footer = () => {
         </div>
 
         <div className="sm:flex md:text-2xl items-center text-lg gap-5 hidden ">
-        <FaFacebookF />
-        <FaInstagram />
-        <FaTwitter />
+        <FaFacebookF className=" hover:text-[#E67E22]"/>
+        <FaInstagram className=" hover:text-[#E67E22]"/>
+        <FaTwitter className=" hover:text-[#E67E22]"/>
         </div>
       </div>
       </div>

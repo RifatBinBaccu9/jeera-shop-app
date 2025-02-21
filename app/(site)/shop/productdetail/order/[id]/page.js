@@ -83,11 +83,11 @@ export default function CheckoutPage() {
 <Modal title="Basic Modal" open={isModalOpen} >
 <Result
     status="success"
-    title="Successfully Purchased Cloud Server ECS!"
+    title="Your order is successfully place"
     subTitle="Order number: 2017182818828182881 Cloud server configuration takes 1-5 minutes, please wait."
     extra={[
-      <Link href="/" type="primary" key="console">Go Home</Link>,
-      <Link href="/shop/product" key="buy">Buy Again</Link>,
+      <Link href="/" type="primary" key="console" className="!border !border-[#a6a6a6] hover:!border-[#000] !rounded-md px-2 py-1 !text-base !font-semibold !font-poppins !text-[#a6a6a6] hover:!text-[#000]">Go Home</Link>,
+    <Link href="/shop/product" key="buy" className="!border !border-[#E67E22] hover:!border-[#ef2b12] !rounded-md px-2 py-1 !text-base !font-semibold !font-poppins !text-[#E67E22] hover:!text-[#ef2b12]">Buy Again</Link>,
     ]}
   />   
       </Modal>
@@ -99,11 +99,11 @@ export default function CheckoutPage() {
         <span>Home</span>
         </Link>
         <MdKeyboardArrowRight />
-        <Link href={'/shop'} className='flex flex-row items-center gap-2'>
+        <Link href={'/shop/product'} className='flex flex-row items-center gap-2'>
         <span>Shop</span>
         </Link>
         <MdKeyboardArrowRight />
-        <Link href={'/productdetail'} className='flex flex-row items-center gap-2'>
+        <Link href={`#`} className='flex flex-row items-center gap-2'>
         <span>Product Detail</span>
         </Link>
         <MdKeyboardArrowRight />
@@ -199,7 +199,7 @@ export default function CheckoutPage() {
             <span className="font-bangla">{name}</span> 
           </p>
         </div>
-        <p className="text-[#E67E22] font-semibold text-lg text-end">{price}৳</p>
+        <p className="text-[#E67E22] font-semibold text-lg text-end">Quantity: {productCount} x {price}৳</p>
       </div>
     </div>
 
@@ -207,7 +207,7 @@ export default function CheckoutPage() {
           <h3 className="text-lg font-bold">Product</h3>
           <hr className="border my-2"/>
           <p className="flex justify-between mb-1">
-            <span>Subtotal:</span> <span>{price}৳</span>
+            <span>Subtotal:</span>  <span>{price}৳</span>
           </p>
           <p className="flex justify-between">
             <span>Shipping:</span> <span>{formData.shipping === "Inside Dhaka" ? "50৳" : "80৳"}</span>

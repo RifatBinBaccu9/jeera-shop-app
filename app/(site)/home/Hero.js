@@ -36,7 +36,7 @@ export default function Hero() {
         <div className=" w-full h-[325px] sm:h-[400px] lg:h-[500px] xl:h-[650px] flex flex-col justify-center items-center  text-white opacity-95">
           <h1 className="text-base sm:text-xl lg:text-2xl xl:text-4xl w-[350px] sm:w-[500px] lg:w-[600px] xl:w-[900px] text-center font-semibold font-poppins">"বিশ্বাসের সাথে কিনুন – আমাদের জিরা একবার ব্যবহার করলেই মন জয় করবে!"</h1>
           <div className=" text-center mt-4 sm:mt-6 lg:mt-8">
-            <Link href={'/'} className=" text-sm sm:text-base lg:text-lg xl:text-xl rounded-full font-normal sm:font-semibold lg:font-bold font-poppins px-3 sm:px-4 lg:px-6 py-[6px] sm:py-2 lg:py-3 bg-[#E67E22] z-50 hover:bg-[#f46430]">Order New</Link>
+            <Link href={'/shop/product'} className=" text-sm sm:text-base lg:text-lg xl:text-xl rounded-full font-normal sm:font-semibold lg:font-bold font-poppins px-3 sm:px-4 lg:px-6 py-[6px] sm:py-2 lg:py-3 bg-[#E67E22] z-50 hover:bg-[#f46430]">Order New</Link>
             </div>
         </div>
         </SwiperSlide>
@@ -44,7 +44,7 @@ export default function Hero() {
         <div className="w-full h-[325px] sm:h-[400px] lg:h-[500px] xl:h-[650px] flex flex-col justify-center items-center  text-white opacity-95">
           <h1 className="text-base sm:text-xl lg:text-2xl xl:text-4xl w-[350px] sm:w-[500px] lg:w-[600px] xl:w-[900px]  text-center font-semibold font-poppins">"বিশ্বাসের সাথে কিনুন – আমাদের জিরা একবার ব্যবহার করলেই মন জয় করবে!"</h1>
           <div className=" text-center mt-4 sm:mt-6 lg:mt-8">
-            <Link href={'/'} className=" text-sm sm:text-base lg:text-lg xl:text-xl rounded-full font-normal sm:font-semibold lg:font-bold font-poppins px-3 sm:px-4 lg:px-6 py-[6px] sm:py-2 lg:py-3 bg-[#E67E22] z-50 hover:bg-[#f46430]">Order New</Link>
+            <Link href={'/shop/product'} className=" text-sm sm:text-base lg:text-lg xl:text-xl rounded-full font-normal sm:font-semibold lg:font-bold font-poppins px-3 sm:px-4 lg:px-6 py-[6px] sm:py-2 lg:py-3 bg-[#E67E22] z-50 hover:bg-[#f46430]">Order New</Link>
             </div>
         </div>
         </SwiperSlide>
@@ -52,7 +52,7 @@ export default function Hero() {
         <div className="w-full h-[325px] sm:h-[400px] lg:h-[500px] xl:h-[650px] flex flex-col justify-center items-center  text-white opacity-95">
           <h1 className="text-base sm:text-xl lg:text-2xl xl:text-4xl w-[350px] sm:w-[500px] lg:w-[600px] xl:w-[900px]  text-center font-semibold font-poppins">"বিশ্বাসের সাথে কিনুন – আমাদের জিরা একবার ব্যবহার করলেই মন জয় করবে!"</h1>
           <div className=" text-center mt-4 sm:mt-6 lg:mt-8">
-            <Link href={'/'} className=" text-sm sm:text-base lg:text-lg xl:text-xl rounded-full font-normal sm:font-semibold lg:font-bold font-poppins px-3 sm:px-4 lg:px-6 py-[6px] sm:py-2 lg:py-3 bg-[#E67E22] z-50 hover:bg-[#f46430]">Order New</Link>
+            <Link href={'/shop/product'} className=" text-sm sm:text-base lg:text-lg xl:text-xl rounded-full font-normal sm:font-semibold lg:font-bold font-poppins px-3 sm:px-4 lg:px-6 py-[6px] sm:py-2 lg:py-3 bg-[#E67E22] z-50 hover:bg-[#f46430]">Order New</Link>
             </div>
         </div>
         </SwiperSlide>

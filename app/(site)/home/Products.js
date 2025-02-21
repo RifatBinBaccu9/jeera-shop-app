@@ -24,7 +24,7 @@ export const product = [
     "category": "Fruits",
     "description": "এক গ্লাস পানিতে দুই চামচ সিড মিক্স, একটু মধু ও একটু পিঙ্ক সল্ট মিশিয়ে সহজেই সরবত বানিয়ে খেতে পারেন।",
     "image": "/Apricot1.jfif",
-    "image2": "/Apricot2.jfif"
+    "image2": "/Apricot2.jfif",
   },
   {
     "id": 2,

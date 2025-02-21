@@ -145,14 +145,18 @@ const Blogs = () => {
                             <Image src={cardList.image} alt='image' width={100} height={100} className='w-full h-full'/>
                         </div>
                         <div>
-                            <div className='flex flex-row items-center justify-between mt-6'>
+                        <div className='flex flex-row items-center justify-between mt-6'>
                                 <span className='flex flex-row items-center gap-1'>
                                 <FaRegUserCircle className='text-[#FA8232]'/>
-                                <span>{cardList.name}</span>
+                                <Tooltip title={cardList.name}>
+                                <span className=' line-clamp-1'>{cardList.name}</span>
+                                </Tooltip>
                                 </span>
                                 <span className='flex flex-row items-center gap-1'>
                                 <MdOutlineDateRange className='text-[#FA8232]'/>
-                                <span>{cardList.date}</span>
+                                <Tooltip title={cardList.date}>
+                                <span className=' line-clamp-1'>{cardList.date}</span>
+                                </Tooltip>
                                 </span>
                                 <span className='flex flex-row items-center gap-1'>
                                 <MdOutlineTextsms className='text-[#FA8232]'/>
