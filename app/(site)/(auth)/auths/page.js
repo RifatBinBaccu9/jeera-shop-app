@@ -11,19 +11,19 @@ const Auth = () => {
   const [isActive, setActive] = useState('1')
   return (
     <div className='loginSignup'>
-        <div className=' bg-[#F2F4F5] py-[26px]'>
+      <div className=' bg-[#f4ebd9] py-[26px]'>
          <div className='container flex sm:flex-row flex-wrap items-center gap-2 text-sm font-normal '>
         <Link href={'/'} className='flex flex-row items-center gap-2'>
         <IoHomeOutline />
         <span>Home</span>
         </Link>
         <MdKeyboardArrowRight />
-        <span>User Account</span>
+        <Link href={'/blog/bloglist'} className='flex flex-row items-center gap-2'>
+        <span>blog</span>
+        </Link>
         <MdKeyboardArrowRight />
-        {
-          isActive === "1" ? <span className='text-[#2DA5F3]'>Sign In</span> : <span className='text-[#2DA5F3]'>Sign Up</span>
-        }
-        </div>
+        <span className='text-[#E67E22]'>{ isActive === '1' ? 'Sign In' : 'Sign Up'}</span> 
+        </div> 
         </div>
 
 <div className='py-[100px] flex justify-center items-center select-none'>
@@ -57,12 +57,6 @@ const Auth = () => {
       />
     </ConfigProvider>
 </div>
-     
-    {/*  */}
-
-
-
-  {/*  */}
     </div>
   )
 }

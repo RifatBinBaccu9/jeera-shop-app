@@ -20,20 +20,20 @@ const SignUp = () => {
      {/* Email  */}
      <div> 
     <label htmlFor="name" className='text-sm font-normal cursor-pointer'>Name</label>
-    <input type="text" id='name' className='w-full  h-[44px] outline-none text-sm font-normal bg-white border border-[#E4E7E9] rounded-sm mt-2'/>
+    <input type="text" id='name' className='w-full  h-[44px] outline-none text-sm font-normal bg-white border border-[#FA8232] rounded-sm mt-2'/>
     </div>
 
      {/* Email  */}
      <div> 
     <label htmlFor="email" className='text-sm font-normal cursor-pointer'>Email Address</label>
-    <input type="email" id='email' className='w-full  h-[44px] outline-none text-sm font-normal bg-white border border-[#E4E7E9] rounded-sm mt-2'/>
+    <input type="email" id='email' className='w-full  h-[44px] outline-none text-sm font-normal bg-white border border-[#FA8232] rounded-sm mt-2'/>
     </div>
 
     {/* Password */}
      <div className='flex flex-col'>
       <label htmlFor="password" className='text-sm font-normal mb-2 cursor-pointer'>Password</label>
                
-    <div className="relative flex items-center border border-[#E4E7E9] w-full h-[44px] bg-white rounded-sm mt-2">
+    <div className="relative flex items-center border border-[#FA8232] w-full h-[44px] bg-white rounded-sm mt-2">
       <input
         type={showPassword ? "text" : "password"}
         id="password"
@@ -53,7 +53,7 @@ const SignUp = () => {
     <div className='flex flex-col'>
     <label htmlFor="password" className='text-sm font-normal mb-2 cursor-pointer'>Confirm Password</label>
                 
-    <div className="relative flex items-center border border-[#E4E7E9] w-full h-[44px] bg-white rounded-sm mt-2">
+    <div className="relative flex items-center border border-[#FA8232] w-full h-[44px] bg-white rounded-sm mt-2">
       <input
         type={showPassword ? "text" : "password"}
         id="password"
@@ -74,15 +74,15 @@ const SignUp = () => {
    
 <Checkbox onChange={onChange}></Checkbox>
 
-        <span className=' text-sm font-normal '>Are you agree to Clicon <span className='text-[#2DA5F3]'><Link href={'#'} >Terms of Condition</Link></span> and <span className='text-[#2DA5F3]'><Link href={'#'} >Privacy Policy</Link></span>.
+        <span className=' text-sm font-normal '>Are you agree to Clicon <span className='text-[#FA8232]'><Link href={'#'} >Terms of Condition</Link></span> and <span className='text-[#FA8232]'><Link href={'#'} >Privacy Policy</Link></span>.
         </span>
     </div>
    </div>
 
-            <Link href={"/"} className='flex flex-row items-center justify-center gap-2 text-sm font-bold bg-[#FA8232] text-white rounded-[2px] w-full h-[44px] uppercase mt-5'><span className='text-white'>Sign in</span> <FaArrowRight className='text-white'/></Link>
+            <Link href={"/"} className='flex flex-row items-center justify-center gap-2 text-sm font-bold bg-[#FA8232] text-white rounded-[2px] w-full h-[44px] uppercase mt-5'><span className='text-white'>Sign Up</span> <FaArrowRight className='text-white'/></Link>
             
             <div className=' relative flex items-center justify-center text-sm font-normal text-[#77878F] border border-[#77878F] mt-6 mb-3'>
-              <p className=' absolute -top-3 bg-white px-2'>Or</p>
+              <p className=' absolute -top-4 bg-[#FAF3E0] z-10 rounded-full px-2 py-1'>Or</p>
             </div>
 
             

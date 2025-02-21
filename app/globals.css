@@ -15,7 +15,7 @@
 }
 .loginSignup{
   .ant-tabs{
-    @apply !w-[400px] sm:!w-[424px] !flex !flex-col !justify-center !items-center !border rounded-sm;
+    @apply !w-[400px] !p-1 sm:!w-[424px] !flex !flex-col !justify-center !items-center !border !border-[#FA8232] rounded-sm;
   }
   .ant-tabs-tab-btn{
     @apply text-[#77878F] text-xl font-semibold;
