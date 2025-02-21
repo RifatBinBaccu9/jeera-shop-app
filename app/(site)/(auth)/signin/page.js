@@ -1,16 +1,49 @@
 "use client";
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BsEye, BsEyeSlash } from 'react-icons/bs';
 import { FaApple, FaArrowRight } from 'react-icons/fa6';
 import { FcGoogle } from "react-icons/fc";
-import { useRouter } from 'next/navigation'; // Import useRouter
+import { useRouter } from 'next/navigation'; 
 
 const SignIn = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errors, setErrors] = useState({});
+  const [isFormValid, setIsFormValid] = useState(false);
+
+  const [rememberMe, setRememberMe] = useState(false);
+  console.log(rememberMe);
+  
   const router = useRouter(); 
+
+  useEffect(() => {
+        validateForm();
+    }, [email, password]);
+
+     // Validate form
+     const validateForm = () => {
+      let errors = {};
+
+      if (!email) {
+          errors.email = 'Email is required.';
+      } else if (!/\S+@\S+\.\S+/.test(email)) {
+          errors.email = 'Email is invalid.';
+      }
+
+      if (!password) {
+          errors.password = 'Password is required.';
+      } else if (password.length < 6) {
+          errors.password = 'Password must be at least 6 characters.';
+      }
+
+      setErrors(errors);
+      setIsFormValid(Object.keys(errors).length === 0);
+  };
+
+  
+  // Submit
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,11 +57,22 @@ const SignIn = () => {
     }
   };
 
+  const [validateEmail, setValidateEmail] = useState(false);
+  const heandleValidateEmail = () => {
+    setValidateEmail(true);
+  }
+  const [validatePassword, setValidatePassword] = useState(false);
+  const heandleValidatePassword = () => {
+    setValidatePassword(true);
+  }
   return (
     <div className='px-[32px] py-6'>
       <form onSubmit={handleSubmit}>
         <label htmlFor="email" className='text-sm font-normal cursor-pointer'>Email Address</label>
-        <input type="email" id='email' onChange={(e) => setEmail(e.target.value)} className='w-full  h-[44px] outline-none text-sm font-normal bg-white border border-[#FA8232] rounded-[2px] px-3 mb-4' />
+        <input type="text" onFocus={heandleValidateEmail} id='email' onChange={(e) => setEmail(e.target.value)} className='w-full  h-[44px] outline-none text-sm font-normal bg-white border border-[#FA8232] rounded-[2px] px-3 mb-4' />
+        {
+          validateEmail && (errors.email && <p className='text-[#FA8232] text-sm font-normal'>{errors.email}</p>)
+        }
 
         <div className='flex flex-col'>
           <div className='flex flex-row justify-between items-center mb-2'>
@@ -41,6 +85,7 @@ const SignIn = () => {
             <input
               type={showPassword ? "text" : "password"}
               id="password"
+              onFocus={heandleValidatePassword}
               onChange={(e) => setPassword(e.target.value)}
               className="outline-none border-none flex-1 text-sm font-normal"
             />
@@ -53,6 +98,7 @@ const SignIn = () => {
             </button>
           </div>
         </div>
+        {validatePassword && (errors.password && <p className='text-[#FA8232] text-sm font-normal'>{errors.password}</p>)}
 
         <button type='submit' className='flex flex-row items-center justify-center gap-2 text-sm font-bold bg-[#FA8232] text-white rounded-[2px] w-full h-[44px] uppercase mt-5'>
           <span className='text-white'>Sign in</span> <FaArrowRight className='text-white' />
