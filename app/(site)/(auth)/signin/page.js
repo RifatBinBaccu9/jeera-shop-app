@@ -78,7 +78,7 @@ const SignIn = () => {
           <div className='flex flex-row justify-between items-center mb-2'>
             <label htmlFor="password" className='text-sm font-normal  cursor-pointer'>Password</label>
             <div className='text-sm font-medium cursor-pointer text-[#FA8232]'>
-              <Link href={"/forgetpassword"} >Forget Password</Link>
+              <Link href={"#"} >Forget Password</Link>
             </div>
           </div>
           <div className="relative flex items-center border border-[#FA8232] rounded-[2px] w-full h-[44px] bg-white px-3">

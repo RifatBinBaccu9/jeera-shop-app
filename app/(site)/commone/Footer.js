@@ -22,9 +22,9 @@ const Footer = () => {
      
      <div className="lg:flex justify-between font-jost w-full lg:gap-[100px] ">
       <div className="">
-         <div className="flex flex-row items-center justify-center sm:justify-start mb-6">
-                    <Image src={'/logo2.png'} alt="logo" width={50} height={50} className="w-[45px] sm:w-[70px] lg:w-[90px] h-[45px] sm:h-[70px] lg:h-[90px] "/>
-                    <h1 className="text-xl sm:text-3xl text-[40px] font-bold font-poppins text-[#222222]">ZiranGo</h1>
+         <div className="flex flex-row items-center justify-center sm:justify-start gap-3 mb-6">
+                    <Image src={'/logo.png'} alt="logo" width={50} height={50} className="w-[45px] sm:w-[70px] lg:w-[90px] h-[45px] sm:h-[70px] lg:h-[90px] "/>
+                    <h1 className="text-xl sm:text-3xl text-[40px] font-bold font-poppins text-[#D35400]">ZiranGo</h1>
                 </div>
 
          <div className="sm:flex lg:flex-col sm:flex-row lg:justify-start justify-between lg:space-y-5 lg:mb-0 mb-8  lg:space-x-0 sm:space-x-5 sm:space-y-0 space-y-3">

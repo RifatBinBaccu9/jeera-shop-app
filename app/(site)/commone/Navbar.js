@@ -29,8 +29,8 @@ const Navbar = () => {
   const onClose = () => setOpen(false);
 
   return (
-    <div>
-      <div className="bg-[#F5E1C8] h-8 sm:h-[40px] lg:h-14">
+    <div className="">
+      <div className="bg-[#F5E1C8]  h-8 sm:h-[40px] lg:h-14">
         <div className="flex flex-row justify-between items-center px-10 text-[#222222] container">
           <div className="flex flex-row items-center text-sm sm:text-base lg:text-lg font-normal font-poppins gap-2 sm:gap-3 lg:gap-4">
             <h1>0176869221</h1>
@@ -60,17 +60,17 @@ const Navbar = () => {
 
       <div className="container z-50 h-[50px] sm:h-[70px] lg:h-[100px] flex flex-row justify-between items-center">
         {/* Logo section */}
-        <div className="flex flex-row items-center">
+        <div className="flex flex-row items-center gap-3">
           <Image
-            src={"/logo2.png"}
+            src={"/logo.png"}
             alt="logo"
             width={50}
             height={50}
             className="w-[45px] sm:w-[70px] lg:w-[90px] h-[45px] sm:h-[70px] lg:h-[90px]"
           />
-          <h1 className="text-xl sm:text-3xl text-[40px] font-bold font-poppins text-[#222222]">
+          <Link href={"/"} className="text-xl text-[#D35400] sm:text-3xl text-[40px] font-bold font-poppins ">
             ZiranGo
-          </h1>
+          </Link>
         </div>
 
         {/* Link section */}
