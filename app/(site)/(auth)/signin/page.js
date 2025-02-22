@@ -50,6 +50,7 @@ const SignIn = () => {
     if (email === "admin@gmail.com" && password === "123456") {
       setRememberMe(true);
       console.log("Login successful!");
+      document.cookie = "authToken=valid_user; path=/; max-age=3600"; // Cookie valid for 1 hour
       router.push("/dashboard"); 
     } else {
       setRememberMe(false);
