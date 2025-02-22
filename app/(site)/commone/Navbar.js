@@ -129,12 +129,13 @@ const Navbar = () => {
           <hr className="my-2" />
           <div className="flex flex-col gap-3 my-6">
             {linkNav.map((links) => (
-              <Link key={links.id} href={links.href}>
+              <Link key={links.id} href={links.href} onClick={onClose} className="flex">
+                {pathname === links.href && <span className="border-l-4 border-[#D35400]"></span>}
                 <div
                   className={`text-sm sm:text-base md:text-lg font-medium font-poppins rounded-sm text-[#222222] hover:text-[#D35400] p-1 ${
                     pathname === links.href
-                      ? "text-red-600 border-b-2 border-red-600"
-                      : "hover:bg-[#a8a8a8] rounded-md py-1 px-3"
+                      ? "text-red-600 bg-[#a8a8a8] rounded-md w-full pl-2"
+                      : "hover:bg-[#a8a8a8] rounded-md w-full "
                   }`}
                 >
                   {links.name}

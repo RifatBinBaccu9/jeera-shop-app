@@ -239,7 +239,7 @@ const Blogs = () => {
                             </Tooltip>
                             <p className='text-base font-normal text-[#8f8777] mb-6 line-clamp-2'>{cardList.dis}</p>
 
-                            <Link href={'/blog/blogedetail'} className='w-[162px] h-[48px] py-3 px-6 border border-[#FA8232] hover:border-[#ff7134] text-[#FA8232] hover:text-[#ff7134] hover:bg-[#F5E1C8] rounded-md flex flex-row items-center justify-center gap-2'><span className='text-sm font-bold'>Read more</span> <MdArrowForward  className='text-xl'/></Link>
+                            <Link href={`/blog/blogedetail/${cardList.id}`} className='w-[162px] h-[48px] py-3 px-6 border border-[#FA8232] hover:border-[#ff7134] text-[#FA8232] hover:text-[#ff7134] hover:bg-[#F5E1C8] rounded-md flex flex-row items-center justify-center gap-2'><span className='text-sm font-bold'>Read more</span> <MdArrowForward  className='text-xl'/></Link>
                         </div>
                         </div>
                 </SwiperSlide>
