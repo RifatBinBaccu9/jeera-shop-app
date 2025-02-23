@@ -43,13 +43,11 @@
   }
 }
 :where(.css-dev-only-do-not-override-972jks).ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn{
-  color: #E67E22 !important;
-  text-shadow: none;
+  @apply !text-[#E67E22] !shadow-none;
 }
 :where(.css-dev-only-do-not-override-972jks).ant-tabs .ant-tabs-tab:hover {
-  color: #000 !important;
+  @apply !text-[#000];
 }
-
 
 :where(.css-dev-only-do-not-override-19lec04).ant-drawer .ant-drawer-header{
     @apply !hidden;
@@ -63,11 +61,10 @@
   }
 
   :where(.css-dev-only-do-not-override-tdezdg).ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn{
-    color: #E67E22 !important;
-    text-shadow: none !important;
+    @apply !text-[#E67E22] !shadow-none;
   }
   :where(.css-dev-only-do-not-override-tdezdg).ant-tabs .ant-tabs-tab:hover {
-    color: #F67E22 !important;
+    @apply !text-[#F67E22];
   }
   :where(.css-dev-only-do-not-override-19lec04).ant-modal .ant-modal-title {
     @apply !hidden;
@@ -78,3 +75,11 @@
   :where(.css-dev-only-do-not-override-19lec04).ant-modal .ant-modal-footer{
     @apply !hidden;
   }
+
+  :where(.css-tdezdg).ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+    @apply !text-[#E67E22] !shadow-none;
+  }
+
+:where(.css-tdezdg).ant-tabs .ant-tabs-tab:hover {
+  @apply !text-[#E67E22];
+}

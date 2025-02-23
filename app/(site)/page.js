@@ -12,10 +12,10 @@ const page = () => {
       <Hero />
       </Suspense>
       <Suspense fallback={<Loading />}>
-      <Product />
+      <Services />
       </Suspense>
       <Suspense fallback={<Loading />}>
-      <Services />
+      <Product />
       </Suspense>
       <Suspense fallback={<Loading />}>
       <Blogs />
