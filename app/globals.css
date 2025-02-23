@@ -69,13 +69,21 @@
   :where(.css-dev-only-do-not-override-19lec04).ant-modal .ant-modal-title {
     @apply !hidden;
   }
+  :where(.css-19lec04).ant-modal .ant-modal-title {
+    @apply !hidden;
+  }
+  :where(.css-19lec04).ant-modal .ant-modal-close-x{
+    @apply !hidden;
+  }
   :where(.css-dev-only-do-not-override-19lec04).ant-modal .ant-modal-close {
     @apply !hidden;
   }
   :where(.css-dev-only-do-not-override-19lec04).ant-modal .ant-modal-footer{
     @apply !hidden;
   }
-
+  :where(.css-19lec04).ant-modal .ant-modal-footer {
+    @apply !hidden;
+  }
   :where(.css-tdezdg).ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
     @apply !text-[#E67E22] !shadow-none;
   }
